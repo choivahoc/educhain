@@ -12,7 +12,6 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {}
 
   public setShowNavbar(): void {
-    console.log('================')
     this.showNavbar = !this.showNavbar;
   }
 }

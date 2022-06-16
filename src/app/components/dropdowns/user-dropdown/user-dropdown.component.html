@@ -8,11 +8,7 @@
     <span
       class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full"
     >
-      <img
-        alt="..."
-        class="w-full rounded-full align-middle border-none shadow-lg"
-        src="assets/img/team-1-800x800.jpg"
-      />
+      <i class="far fa-user"></i>
     </span>
   </div>
 </a>
@@ -22,32 +18,22 @@
     [ngClass]="dropdownPopoverShow ? 'block' : 'hidden'"
   >
     <a
-      [routerLink]="['/admin/settings']"
+      href="/admin/settings"
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      <i
-        class="fas fa-tools mr-2 text-sm"
-      ></i>
       Settings
     </a>
     <a
-      href="#pablo"
+      href="/auth/login"
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      Another action
+      Login
     </a>
     <a
-      href="#pablo"
+      href="/auth/register"
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      Something else here
-    </a>
-    <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-    <a
-      href="#pablo"
-      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-    >
-      Seprated link
+      Register
     </a>
   </div>
 </div>
