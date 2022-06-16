@@ -22,10 +22,13 @@
     [ngClass]="dropdownPopoverShow ? 'block' : 'hidden'"
   >
     <a
-      href="#pablo"
+      [routerLink]="['/admin/settings']"
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      Action
+      <i
+        class="fas fa-tools mr-2 text-sm"
+      ></i>
+      Settings
     </a>
     <a
       href="#pablo"
