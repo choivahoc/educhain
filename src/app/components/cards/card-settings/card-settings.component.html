@@ -19,7 +19,7 @@
       </h6>
       <div class="flex flex-wrap">
         <div class="w-full flex lg:w-12/12 px-4">
-          <div class="relative w-full lg:w-2/3 mb-3">
+          <div class="relative w-6/12 lg:w-2/3 mb-3">
             <label
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
@@ -27,17 +27,35 @@
               Image
             </label>
             <input
-              type="text"
+              type="file"
+              style="display: none"
               class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               formControlName="imageUrl"
+              (change)="onImageSelected($event)"
+              #fileInput
             />
+            <button
+              (click)="fileInput.click()"
+              class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button"
+            >
+              Choose image...
+            </button>
           </div>
           <div class="flex w-full flex-wrap justify-center">
             <div class="w-6/12 sm:w-4/12 px-4">
-              <img src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg" alt="..." class="shadow-lg rounded-full max-w-full h-auto align-middle border-none" />
+              <img
+                [src]="url"
+                *ngIf="url"
+                alt="Avatar"
+                style="width: 136px; height: 136px"
+                class="shadow-lg rounded-full align-middle border-none"
+              />
             </div>
           </div>
+          
         </div>
+        <div class="w-full lg:w-12/12 px-4 mb-3" [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
         <div class="w-full lg:w-12/12 px-4">
           <div class="relative w-full mb-3">
             <label

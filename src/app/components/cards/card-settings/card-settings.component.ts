@@ -9,12 +9,16 @@ import { UserService } from "src/app/services/user.service";
 export class CardSettingsComponent implements OnInit {
   settingsForm!: FormGroup;
   isSubmit: boolean = false;
+  selectedImage: File = null
+  url: any; //Angular 11, for stricter type
+	msg = "";
+
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getUsersByType("student").subscribe((res) => {
-      console.log(res);
-    });
+    // this.userService.getUsersByType("student").subscribe((res) => {
+    //   console.log(res);
+    // });
 
     this.settingsForm = this.fb.group({
       imageUrl: this.fb.control("", [Validators.required]),
@@ -44,5 +48,28 @@ export class CardSettingsComponent implements OnInit {
 
   formSubmit() {
     console.log(this.settingsForm.value);
+  }
+
+  onImageSelected(event){
+    this.url = '';
+    if(!event.target.files[0] || event.target.files[0].length == 0) {
+			this.msg = 'You must select an image';
+			return;
+		}
+		
+		let mimeType = event.target.files[0].type;
+		
+		if (mimeType.match(/image\/*/) == null) {
+			this.msg = "Only images are supported";
+			return;
+		}
+		
+		let reader = new FileReader();
+		reader.readAsDataURL(event.target.files[0]);
+		
+		reader.onload = (_event) => {
+			this.msg = "";
+			this.url = reader.result; 
+		}
   }
 }
