@@ -18,16 +18,16 @@
     [ngClass]="dropdownPopoverShow ? 'block' : 'hidden'"
   >
     <a
-      href="/auth/login"
+      href="/admin/settings"
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
     >
-      Login
+      Settings
     </a>
     <a
-      href="/auth/register"
-      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700 cursor-pointer"
+      (click)="logOut()"
     >
-      Register
+      Logout
     </a>
   </div>
 </div>
