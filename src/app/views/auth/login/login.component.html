@@ -8,19 +8,56 @@
           <div class="text-blueGray-400 text-center mb-3 font-bold">
             <small>Sign in with credentials</small>
           </div>
-          <form>
+          <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Email
+                Username
               </label>
               <input
-                type="email"
+                type="text"
+                #input
+                formControlName="username"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="Email"
+                placeholder="Username"
+                aria-describedby="usernameHelp"
               />
+              <small
+                id="usernameHelp"
+                class="text-red-500"
+                *ngIf="
+                  loginForm.get('username')?.errors?.required &&
+                  loginForm.get('username')?.touched
+                "
+                >Username is required!</small
+              >
+            </div>
+
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Role
+              </label>
+              <input
+                formControlName="role"
+                type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Role"
+                aria-describedby="roleHelp"
+              />
+              <small
+                id="roleHelp"
+                class="text-red-500"
+                *ngIf="
+                  loginForm.get('role')?.errors?.required &&
+                  loginForm.get('role')?.touched
+                "
+                >Role is required!</small
+              >
             </div>
 
             <div class="relative w-full mb-3">
@@ -31,12 +68,23 @@
                 Password
               </label>
               <input
+                formControlName="password"
                 type="password"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Password"
+                aria-describedby="passwordHelp"
               />
+              <small
+                id="passwordHelp"
+                class="text-red-500"
+                *ngIf="
+                  loginForm.get('password')?.errors?.required &&
+                  loginForm.get('password')?.touched
+                "
+                >Password is required!</small
+              >
             </div>
-            <div>
+            <!-- <div>
               <label class="inline-flex items-center cursor-pointer">
                 <input
                   id="customCheckLogin"
@@ -47,12 +95,13 @@
                   Remember me
                 </span>
               </label>
-            </div>
+            </div> -->
 
             <div class="text-center mt-6">
               <button
                 class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                type="button"
+                type="submit"
+                [disabled]="loginForm.invalid"
               >
                 Sign In
               </button>
@@ -61,11 +110,11 @@
         </div>
       </div>
       <div class="flex flex-wrap mt-6 relative justify-end">
-<!--        <div class="w-1/2">-->
-<!--          <a href="javascript:void(0)" class="text-blueGray-200">-->
-<!--            <small>Forgot password?</small>-->
-<!--          </a>-->
-<!--        </div>-->
+        <!--        <div class="w-1/2">-->
+        <!--          <a href="javascript:void(0)" class="text-blueGray-200">-->
+        <!--            <small>Forgot password?</small>-->
+        <!--          </a>-->
+        <!--        </div>-->
         <div class="w-1/2 text-right">
           <a [routerLink]="['/auth/register']" class="text-blueGray-200">
             <small>Create new account</small>

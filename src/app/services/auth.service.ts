@@ -17,21 +17,21 @@ export class AuthService {
     constructor(private httpClient: HttpClient, private userService: UserService, private router: Router) {
     }
 
-    logIn(email: string, password: string, role: string): Observable<IUser> {
+    logIn(username: string, password: string, role: string): Observable<any> {
         const url = `${this.BASE_URL}/login`;
-        const body = {
-            user: {
-                email: email,
+        const body = 
+            {
+                username: username,
                 password: password,
                 role: role
             }
-        }
-        return this.httpClient.post<IUser>(url, body).pipe(
+        
+        return this.httpClient.post<any>(url, body).pipe(
             catchError(this.handleError),
-            tap((user) => {
+            tap((res) => {
                 const Toast = Swal.mixin({
                     toast: true,
-                    position: 'top-end',
+                    position: 'bottom-end',
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
@@ -45,8 +45,8 @@ export class AuthService {
                     icon: 'success',
                     title: 'Signed in successfully'
                   })
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.userService.setCurrentUser(user);
+                localStorage.setItem('token', JSON.stringify(res.token));
+                this.userService.setCurrentToken(res.token);
             })
         )
     }
@@ -86,9 +86,11 @@ export class AuthService {
     // }
 
     logOut() {
+        localStorage.removeItem('token');
         localStorage.removeItem('currentUser');
         this.userService.setCurrentUser(null as any);
-        this.router.navigate(['login']);
+        this.userService.setCurrentToken(null as any);
+        this.router.navigate(['auth','login']);
     }
 
     private handleError(error: HttpErrorResponse) {

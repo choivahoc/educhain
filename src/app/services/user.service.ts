@@ -20,7 +20,19 @@ export class UserService {
       JSON.parse(localStorage.getItem("currentUser") || "null")
     );
 
+  private currentToken: BehaviorSubject<string> = new BehaviorSubject<string>(
+    JSON.parse(localStorage.getItem("token") || "null")
+  );
+
   constructor(private httpClient: HttpClient) {}
+
+  public currentTokenValue(): string {
+    return this.currentToken.value;
+  }
+
+  public setCurrentToken(token: string) {
+    this.currentToken.next(token);
+  }
 
   public currentUserValue(): IUser {
     return this.currentUserSubject.value;
@@ -34,15 +46,15 @@ export class UserService {
     this.currentUserSubject.next(user);
   }
 
-  getCurrentUser(): Observable<IUser> {
-    const url = `${this.BASE_URL}user`;
+  getCurrentUser(): Observable<any> {
+    const url = `${this.BASE_URL}/user/self`;
     return this.httpClient.get<IUser>(url).pipe(
       catchError(this.handleError),
-      // tap((user) => {
-      //   localStorage.setItem("imageUser", JSON.stringify(user?.data?.avatar));
-      //   localStorage.setItem("currentUser", JSON.stringify(user));
-      //   this.currentUserSubject.next(user);
-      // })
+      tap((res) => {
+        localStorage.setItem("imageUser", JSON.stringify(res?.data?.avatar));
+        localStorage.setItem("currentUser", JSON.stringify(res?.data));
+        this.currentUserSubject.next(res?.data);
+      })
     );
   }
 
@@ -60,18 +72,8 @@ export class UserService {
   }
 
   getUsersByType(userType: string) {
-    // let header = {
-    //   "Access-Control-Allow-Headers": "Content-Type",
-    //   "Access-Control-Allow-Methods": "GET",
-    //   "Access-Control-Allow-Origin": "*",
-    // };
-    // const requestOptions = {
-    //   headers: new HttpHeaders(header),
-    // };
     const url = `${this.BASE_URL}/user?user_type=${userType}`;
-    return this.httpClient
-      .get(url)
-      .pipe(catchError(this.handleError));
+    return this.httpClient.get(url).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

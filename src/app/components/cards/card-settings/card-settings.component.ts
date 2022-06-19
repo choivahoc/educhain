@@ -9,16 +9,31 @@ import { UserService } from "src/app/services/user.service";
 export class CardSettingsComponent implements OnInit {
   settingsForm!: FormGroup;
   isSubmit: boolean = false;
-  selectedImage: File = null
+  selectedImage: File = null;
   url: any; //Angular 11, for stricter type
-	msg = "";
+  msg = "";
 
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
-    // this.userService.getUsersByType("student").subscribe((res) => {
-    //   console.log(res);
-    // });
+    this.userService.getCurrentUser().subscribe((res) => {
+      console.log(res);
+      this.settingsForm.patchValue({
+        // imageUrl: res.data.avatar,
+        fullName: res.data.full_name,
+        gender: res.data.profile.gender,
+        email: res.data.email,
+        address: res.data.profile.address,
+        dateOfBirth: res.data.profile.date_of_birth,
+        city: res.data.profile.province,
+        phone: '',
+        identityCard: {
+          no: res.data.citizen_identity_card.no,
+          dateOfIssue: res.data.citizen_identity_card.date_of_issue,
+          dateOfExprity: res.data.citizen_identity_card.date_of_exprity,
+        },
+      });
+    });
 
     this.settingsForm = this.fb.group({
       imageUrl: this.fb.control("", [Validators.required]),
@@ -35,41 +50,32 @@ export class CardSettingsComponent implements OnInit {
         dateOfExprity: this.fb.control("", [Validators.required]),
       }),
     });
-    // this.userService.getCurrentUser().subscribe(data => {
-    //   this.currentUser = data;
-    //   this.settingsForm.patchValue({
-    //     imageUrl: this.currentUser.user.image,
-    //     username: this.currentUser.user.username,
-    //     bio: this.currentUser.user.bio,
-    //     email: this.currentUser.user.email
-    //   })
-    // })
   }
 
   formSubmit() {
     console.log(this.settingsForm.value);
   }
 
-  onImageSelected(event){
-    this.url = '';
-    if(!event.target.files[0] || event.target.files[0].length == 0) {
-			this.msg = 'You must select an image';
-			return;
-		}
-		
-		let mimeType = event.target.files[0].type;
-		
-		if (mimeType.match(/image\/*/) == null) {
-			this.msg = "Only images are supported";
-			return;
-		}
-		
-		let reader = new FileReader();
-		reader.readAsDataURL(event.target.files[0]);
-		
-		reader.onload = (_event) => {
-			this.msg = "";
-			this.url = reader.result; 
-		}
+  onImageSelected(event) {
+    this.url = "";
+    if (!event.target.files[0] || event.target.files[0].length == 0) {
+      this.msg = "You must select an image";
+      return;
+    }
+
+    let mimeType = event.target.files[0].type;
+
+    if (mimeType.match(/image\/*/) == null) {
+      this.msg = "Only images are supported";
+      return;
+    }
+
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+
+    reader.onload = (_event) => {
+      this.msg = "";
+      this.url = reader.result;
+    };
   }
 }
