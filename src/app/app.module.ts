@@ -50,6 +50,8 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "./services/token.interceptor";
+import { StudentsComponent } from './layouts/students/students/students.component';
+import { DashboardStudentsComponent } from "./views/students/dashboard-students/dashboard-students.component";
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { TokenInterceptor } from "./services/token.interceptor";
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    StudentsComponent,
+    DashboardStudentsComponent
   ],
   imports: [
     BrowserModule,
@@ -99,4 +103,4 @@ import { TokenInterceptor } from "./services/token.interceptor";
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

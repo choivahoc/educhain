@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // layouts
 import { AdminComponent } from './layouts/admin/admin.component';
 import { AuthComponent } from './layouts/auth/auth.component';
+import { StudentsComponent } from './layouts/students/students/students.component';
 
 // admin views
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
@@ -13,6 +14,7 @@ import { TablesComponent } from './views/admin/tables/tables.component';
 // auth views
 import { LoginComponent } from './views/auth/login/login.component';
 import { RegisterComponent } from './views/auth/register/register.component';
+import { DashboardStudentsComponent } from './views/students/dashboard-students/dashboard-students.component';
 
 // no layouts views
 
@@ -25,6 +27,14 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
+    ],
+  },
+  // student views
+  {
+    path: 'student',
+    component: StudentsComponent,
+    children: [
+      { path: 'dashboard', component: DashboardStudentsComponent },
     ],
   },
   // auth views
@@ -48,4 +58,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
