@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { IUser, IUserUpdate } from "src/app/models/user.model";
 import { UserService } from "src/app/services/user.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-card-settings",
@@ -21,12 +23,12 @@ export class CardSettingsComponent implements OnInit {
       this.settingsForm.patchValue({
         // imageUrl: res.data.avatar,
         fullName: res.data.full_name,
-        gender: res.data.profile.gender,
+        gender: res.data.profile.gender === "nam" ? "male" : "female",
         email: res.data.email,
         address: res.data.profile.address,
         dateOfBirth: res.data.profile.date_of_birth,
         city: res.data.profile.province,
-        phone: '',
+        phone: "",
         identityCard: {
           no: res.data.citizen_identity_card.no,
           dateOfIssue: res.data.citizen_identity_card.date_of_issue,
@@ -54,6 +56,44 @@ export class CardSettingsComponent implements OnInit {
 
   formSubmit() {
     console.log(this.settingsForm.value);
+
+    this.isSubmit = true;
+    const userUpdate = {
+      // avatar: "string",
+      email: this.settingsForm.value.email,
+      full_name: this.settingsForm.value.fullName,
+      profile: {
+        address: this.settingsForm.value.address,
+        city: this.settingsForm.value.city,
+        date_of_birth: this.settingsForm.value.dateOfBirth,
+        gender: this.settingsForm.value.gender,
+        phone: this.settingsForm.value.phone,
+      },
+      citizen_identity_card: {
+        date_of_exprity: this.settingsForm.value.identityCard.dateOfExprity,
+        date_of_issue: this.settingsForm.value.identityCard.dateOfIssue,
+        no: this.settingsForm.value.identityCard.no,
+      },
+    };
+    this.userService.updateUser(userUpdate).subscribe((data) => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "Update in successfully",
+      });
+      // this.router.navigate(["profile", data.user.username]);
+    });
   }
 
   onImageSelected(event) {
@@ -77,5 +117,20 @@ export class CardSettingsComponent implements OnInit {
       this.msg = "";
       this.url = reader.result;
     };
+  }
+
+  updateUser() {
+    Swal.fire({
+      icon: "question",
+      title: "Are you sure you want to update?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      confirmButtonColor: "#fa6342",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.formSubmit();
+      }
+    });
   }
 }

@@ -13,7 +13,7 @@ export class UserDropdownComponent implements AfterViewInit {
   @ViewChild('btnDropdownRef', { static: false }) btnDropdownRef: ElementRef;
   @ViewChild('popoverDropdownRef', { static: false })
   popoverDropdownRef: ElementRef;
-  
+  url: any;
   constructor(private authService : AuthService){}
   ngAfterViewInit() {
     createPopper(

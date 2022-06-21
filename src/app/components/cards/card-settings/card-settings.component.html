@@ -3,19 +3,19 @@
 >
   <div class="rounded-t bg-white mb-0 px-6 py-6">
     <div class="text-center flex justify-between">
-      <h6 class="text-blueGray-700 text-xl font-bold">My account</h6>
-      <button
+      <h6 class="text-blueGray-700 text-xl font-bold">Tổng quan</h6>
+      <!-- <button
         class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
         type="button"
       >
         Settings
-      </button>
+      </button> -->
     </div>
   </div>
   <div class="flex-auto px-4 lg:px-10 pt-0">
     <form [formGroup]="settingsForm" (ngSubmit)="formSubmit()">
       <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        User Information
+        Thông tin cơ bản
       </h6>
       <div class="flex flex-wrap">
         <div class="w-full flex lg:w-12/12 px-4">
@@ -24,7 +24,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Image
+              Ảnh
             </label>
             <input
               type="file"
@@ -39,7 +39,7 @@
               class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button"
             >
-              Choose image...
+              Chọn ảnh...
             </button>
           </div>
           <div class="flex w-full flex-wrap justify-center">
@@ -53,16 +53,20 @@
               />
             </div>
           </div>
-          
         </div>
-        <div class="w-full lg:w-12/12 px-4 mb-3" [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+        <div
+          class="w-full lg:w-12/12 px-4 mb-3"
+          [innerHtml]="msg"
+          *ngIf="msg"
+          style="color: red"
+        ></div>
         <div class="w-full lg:w-12/12 px-4">
           <div class="relative w-full mb-3">
             <label
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Full name
+              Họ và tên
             </label>
             <input
               type="text"
@@ -77,13 +81,46 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Gender
+              Giới tính
             </label>
-            <input
+            <div class="flex justify-start">
+              <div class="form-check form-check-inline pr-4">
+                <input
+                  class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  type="radio"
+                  name="gender"
+                  id="inlineRadio1"
+                  value="male"
+                  formControlName="gender"
+                />
+                <label
+                  class="form-check-label inline-block text-gray-800"
+                  for="inlineRadio10"
+                  >Nam</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                  type="radio"
+                  name="gender"
+                  id="inlineRadio2"
+                  value="female"
+                  formControlName="gender"
+                />
+                <label
+                  class="form-check-label inline-block text-gray-800"
+                  for="inlineRadio20"
+                  >Nữ</label
+                >
+              </div>
+            </div>
+
+            <!-- <input
               type="text"
               class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               formControlName="gender"
-            />
+            /> -->
           </div>
         </div>
         <div class="w-full lg:w-12/12 px-4">
@@ -92,7 +129,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Date of birth
+              Ngày sinh
             </label>
             <input
               type="text"
@@ -107,7 +144,7 @@
       <hr class="mt-6 border-b-1 border-blueGray-300" />
 
       <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        Contact Information
+        Thông tin liên lạc
       </h6>
       <div class="w-full lg:w-12/12 px-4">
         <div class="relative w-full mb-3">
@@ -115,7 +152,7 @@
             class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
             htmlFor="grid-password"
           >
-            Email address
+            Email
           </label>
           <input
             type="email"
@@ -131,7 +168,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Address
+              Địa chỉ
             </label>
             <input
               type="text"
@@ -146,7 +183,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Phone
+              Số điện thọai
             </label>
             <input
               type="text"
@@ -159,7 +196,7 @@
       <hr class="mt-6 border-b-1 border-blueGray-300" />
 
       <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        Identity Card
+        CMND/CCCD
       </h6>
       <div formGroupName="identityCard">
         <div class="flex flex-wrap">
@@ -169,7 +206,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                No
+                Số
               </label>
               <input
                 type="text"
@@ -184,7 +221,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Date Of Issue
+                Ngày cấp
               </label>
               <input
                 type="email"
@@ -199,7 +236,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Date Of Exprity
+                Ngày hết hạn
               </label>
               <input
                 type="text"
@@ -216,7 +253,7 @@
           class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
           type="submit"
         >
-          Submit
+          Cập nhật
         </button>
       </div>
     </form>

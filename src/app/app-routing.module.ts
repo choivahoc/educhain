@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 // layouts
 import { AdminComponent } from './layouts/admin/admin.component';
 import { AuthComponent } from './layouts/auth/auth.component';
+import { AuthGuard } from './services/auth.guard';
+import { NoAuthGuard } from './services/no-auth.guard';
 
 // admin views
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
@@ -13,6 +15,9 @@ import { TablesComponent } from './views/admin/tables/tables.component';
 // auth views
 import { LoginComponent } from './views/auth/login/login.component';
 import { RegisterComponent } from './views/auth/register/register.component';
+import { IndexComponent } from './views/index/index.component';
+import { LandingComponent } from './views/landing/landing.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 // no layouts views
 
@@ -26,6 +31,7 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
     ],
+    canActivate: [AuthGuard],
   },
   // auth views
   {
@@ -36,6 +42,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
+    canActivate: [NoAuthGuard]
   },
   // no layout views
   // { path: 'profile', component: ProfileComponent },
