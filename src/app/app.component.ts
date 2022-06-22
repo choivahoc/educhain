@@ -10,8 +10,7 @@ export class AppComponent {
   constructor(public translate: TranslateService) {
     translate.addLangs(['vi', 'en']);
     translate.setDefaultLang('vi');
-    // const browserLang = translate.getBrowserLang();
-    translate.use('vi');
-    // translate.use(browserLang.match(/vi|en/) ? browserLang : 'vi');
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/vi|en/) ? 'vi' : browserLang);
   }
 }
