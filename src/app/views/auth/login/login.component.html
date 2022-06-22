@@ -6,7 +6,7 @@
       >
         <div class="flex-auto px-4 lg:px-10 py-10 pt-4">
           <div class="text-blueGray-400 text-center mb-3 font-bold">
-            <small>Đăng nhập</small>
+            <small>{{'LOGIN.LOGIN' | translate}}</small>
           </div>
           <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
             <div class="relative w-full mb-3">
@@ -14,7 +14,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Tài khoản
+                {{'LOGIN.USERNAME' | translate}}
               </label>
               <input
                 type="text"
@@ -40,7 +40,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Vai trò
+              {{'LOGIN.ROLE' | translate}}
               </label>
               <select
                 class="form-select border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -69,7 +69,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Mật khẩu
+              {{'LOGIN.PASSWORD' | translate}}
               </label>
               <input
                 formControlName="password"
@@ -107,7 +107,7 @@
                 type="submit"
                 [disabled]="loginForm.invalid"
               >
-                Đăng nhập
+              {{'LOGIN.LOGIN' | translate}}
               </button>
             </div>
           </form>
@@ -121,7 +121,7 @@
         <!--        </div>-->
         <div class="w-1/2 text-right">
           <a [routerLink]="['/auth/register']" class="text-blueGray-200">
-            <small>Tạo tài khoản</small>
+            <small>{{'LOGIN.REGISTER' | translate}}</small>
           </a>
         </div>
       </div>

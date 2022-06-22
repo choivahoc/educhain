@@ -1,0 +1,9 @@
+{
+  "LOGIN": {
+    "USERNAME": "Tài khoản",
+    "ROLE": "Vai trò",
+    "PASSWORD": "Mật khẩu",
+    "LOGIN": "Đăng nhập",
+    "REGISTER": "Tạo tài khoản"
+  }
+}

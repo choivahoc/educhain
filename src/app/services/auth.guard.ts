@@ -16,16 +16,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     else {
-      return Swal.fire({
-        icon: 'warning',
-        title: 'You need to login first!!!',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#fa6342',
-      }).then((result) => {
-        this.router.navigate(['auth','login']);
-        return true
-      }
-      )
+      this.router.navigate(['auth','login']);
     }
   }
 }
