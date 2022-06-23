@@ -20,6 +20,7 @@ import { IndexComponent } from './views/index/index.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { DashboardStudentsComponent } from './views/students/dashboard-students/dashboard-students.component';
+import { SettingGuard } from './services/setting.guard';
 
 // no layouts views
 
@@ -30,7 +31,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'settings', component: SettingsComponent,  canDeactivate: [SettingGuard] },
       { path: 'tables', component: TablesComponent },
     ],
     canActivate: [AuthGuard],
