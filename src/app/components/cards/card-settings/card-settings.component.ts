@@ -12,6 +12,7 @@ export class CardSettingsComponent implements OnInit {
   settingsForm!: FormGroup;
   isSubmit: boolean = false;
   selectedImage: File = null;
+  currentUser: IUser;
   url: any; //Angular 11, for stricter type
   msg = "";
 
@@ -20,6 +21,7 @@ export class CardSettingsComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((res) => {
       console.log(res);
+      this.currentUser = res.data;
       this.settingsForm.patchValue({
         // imageUrl: res.data.avatar,
         fullName: res.data.full_name,
@@ -58,6 +60,7 @@ export class CardSettingsComponent implements OnInit {
     console.log(this.settingsForm.value);
 
     this.isSubmit = true;
+    this.currentUser
     const userUpdate = {
       // avatar: "string",
       email: this.settingsForm.value.email,

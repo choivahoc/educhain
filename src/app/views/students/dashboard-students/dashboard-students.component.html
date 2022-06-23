@@ -1,0 +1,118 @@
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+  [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
+>
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h3
+          class="font-semibold text-lg"
+          [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+        >
+        Kết quả học tập
+        </h3>
+      </div>
+      <button
+          class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+        >
+          Xem bằng
+        </button>
+    </div>
+  </div>
+  <div class="block w-full overflow-x-auto">
+    <!-- Projects table -->
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            STT
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Mã môn học
+          </th>
+          
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Tên môn học
+          </th>
+
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Số tín chỉ
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Điểm
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of points; let i = index">
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          >
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
+            >
+              {{i + 1}}
+            </span>
+          </th>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            {{item?.id}}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          {{item?.name}}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          {{item?.number}}
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+            {{item?.point}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
