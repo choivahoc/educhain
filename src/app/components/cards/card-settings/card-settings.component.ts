@@ -12,9 +12,9 @@ export class CardSettingsComponent implements OnInit {
   settingsForm!: FormGroup;
   isSubmit: boolean = false;
   selectedImage: File = null;
+  currentUser: IUser;
   url: any; //Angular 11, for stricter type
   msg = "";
-  currentUser: IUser;
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {

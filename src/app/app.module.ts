@@ -56,6 +56,8 @@ import {
 import { TokenInterceptor } from "./services/token.interceptor";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { StudentsComponent } from './layouts/students/students/students.component';
+import { DashboardStudentsComponent } from "./views/students/dashboard-students/dashboard-students.component";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -97,6 +99,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    StudentsComponent,
+    DashboardStudentsComponent
   ],
   imports: [
     BrowserModule,
@@ -116,4 +120,4 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

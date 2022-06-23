@@ -6,6 +6,7 @@ import { AdminComponent } from './layouts/admin/admin.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { AuthGuard } from './services/auth.guard';
 import { NoAuthGuard } from './services/no-auth.guard';
+import { StudentsComponent } from './layouts/students/students/students.component';
 
 // admin views
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
@@ -18,6 +19,7 @@ import { RegisterComponent } from './views/auth/register/register.component';
 import { IndexComponent } from './views/index/index.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { DashboardStudentsComponent } from './views/students/dashboard-students/dashboard-students.component';
 
 // no layouts views
 
@@ -32,6 +34,14 @@ const routes: Routes = [
       { path: 'tables', component: TablesComponent },
     ],
     canActivate: [AuthGuard],
+  },
+  // student views
+  {
+    path: 'student',
+    component: StudentsComponent,
+    children: [
+      { path: 'dashboard', component: DashboardStudentsComponent },
+    ],
   },
   // auth views
   {
@@ -55,4 +65,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
