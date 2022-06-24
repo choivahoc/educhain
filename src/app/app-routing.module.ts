@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // layouts
 import { AdminComponent } from './layouts/admin/admin.component';
 import { AuthComponent } from './layouts/auth/auth.component';
+import { TeacherComponent } from './layouts/teacher/teacher.component';
 
 // admin views
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
@@ -13,6 +14,8 @@ import { TablesComponent } from './views/admin/tables/tables.component';
 // auth views
 import { LoginComponent } from './views/auth/login/login.component';
 import { RegisterComponent } from './views/auth/register/register.component';
+import { ClassDetailComponent } from './views/teacher/class-detail/class-detail.component';
+import { DashboardTeachersComponent } from './views/teacher/dashboard-teachers/dashboard-teachers.component';
 
 // no layouts views
 
@@ -27,6 +30,15 @@ const routes: Routes = [
       { path: 'tables', component: TablesComponent },
     ],
   },
+    // student views
+    {
+      path: 'teacher',
+      component: TeacherComponent,
+      children: [
+        { path: 'dashboard', component: DashboardTeachersComponent },
+        { path: 'class/:id', component: ClassDetailComponent },
+      ],
+    },
   // auth views
   {
     path: 'auth',

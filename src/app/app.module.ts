@@ -50,6 +50,9 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "./services/token.interceptor";
+import { TeacherComponent } from "./layouts/teacher/teacher.component";
+import { DashboardTeachersComponent } from "./views/teacher/dashboard-teachers/dashboard-teachers.component";
+import { ClassDetailComponent } from "./views/teacher/class-detail/class-detail.component";
 
 @NgModule({
   declarations: [
@@ -87,6 +90,9 @@ import { TokenInterceptor } from "./services/token.interceptor";
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    TeacherComponent,
+    DashboardTeachersComponent,
+    ClassDetailComponent,
   ],
   imports: [
     BrowserModule,
