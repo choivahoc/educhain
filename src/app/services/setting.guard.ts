@@ -20,7 +20,7 @@ export class SettingGuard implements CanDeactivate<SettingsComponent> {
         if (component.settingRef.settingsForm.dirty && !component.settingRef.isSubmit) {
         return Swal.fire({
           icon: 'question',
-          title: this.translate.instant('CONFIRM.LEAVE'),
+          title: this.translate.instant('MODAL.LEAVE'),
           showCancelButton: true,
           confirmButtonText: 'Yes',
           confirmButtonColor: '#fa6342',

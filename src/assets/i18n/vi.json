@@ -10,7 +10,8 @@
     "HAVE_ACCOUNT": "Đã có tài khoản?"
   },
 
-  "CONFIRM" : {
-    "LEAVE": "Bạn có muốn rời khỏi trang không?"
+  "MODAL" : {
+    "LEAVE": "Bạn có muốn rời khỏi trang không?",
+    "UPDATE_SUCCESS": "Cập nhật thành công"
   }
 }

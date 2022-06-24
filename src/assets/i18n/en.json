@@ -10,7 +10,8 @@
     "SIGN_UP" : "Sign up"
   },
 
-  "CONFIRM" : {
-    "LEAVE": "The form has not been submitted yet, do you really want to leave page?"
+  "MODAL" : {
+    "LEAVE": "The form has not been submitted yet, do you really want to leave page?",
+    "UPDATE_SUCCESS": "Update in successfully"
   }
 }

@@ -27,9 +27,6 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm(){
-    this.router.navigate(['auth','login'])
-    // this.authService.logIn(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.userid).subscribe(user => {
-    //   this.router.navigate(['auth','login'])
-    // })
+    this.authService.register(this.registerForm.value.username, this.registerForm.value.userid, this.registerForm.value.password).subscribe();
   }
 }
