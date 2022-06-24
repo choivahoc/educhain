@@ -5,6 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './layouts/admin/admin.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { TeacherComponent } from './layouts/teacher/teacher.component';
+import { AuthGuard } from './services/auth.guard';
+import { NoAuthGuard } from './services/no-auth.guard';
+import { StudentsComponent } from './layouts/students/students/students.component';
 
 // admin views
 import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
@@ -16,6 +19,10 @@ import { LoginComponent } from './views/auth/login/login.component';
 import { RegisterComponent } from './views/auth/register/register.component';
 import { ClassDetailComponent } from './views/teacher/class-detail/class-detail.component';
 import { DashboardTeachersComponent } from './views/teacher/dashboard-teachers/dashboard-teachers.component';
+import { IndexComponent } from './views/index/index.component';
+import { LandingComponent } from './views/landing/landing.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { DashboardStudentsComponent } from './views/students/dashboard-students/dashboard-students.component';
 
 // no layouts views
 
@@ -28,6 +35,15 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
+    ],
+    canActivate: [AuthGuard],
+  },
+  // student views
+  {
+    path: 'student',
+    component: StudentsComponent,
+    children: [
+      { path: 'dashboard', component: DashboardStudentsComponent },
     ],
   },
     // student views
@@ -48,6 +64,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
+    canActivate: [NoAuthGuard]
   },
   // no layout views
   // { path: 'profile', component: ProfileComponent },
@@ -60,4 +77,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

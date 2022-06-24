@@ -48,12 +48,27 @@ import { NotificationDropdownComponent } from "./components/dropdowns/notificati
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from "@angular/common/http";
 import { TokenInterceptor } from "./services/token.interceptor";
+<<<<<<< HEAD
 import { TeacherComponent } from "./layouts/teacher/teacher.component";
 import { DashboardTeachersComponent } from "./views/teacher/dashboard-teachers/dashboard-teachers.component";
 import { ClassDetailComponent } from "./views/teacher/class-detail/class-detail.component";
+=======
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { StudentsComponent } from './layouts/students/students/students.component';
+import { DashboardStudentsComponent } from "./views/students/dashboard-students/dashboard-students.component";
+>>>>>>> 4846ebdebf5c29ea72064a97ce8e3c449c6ce573
 
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,19 +105,31 @@ import { ClassDetailComponent } from "./views/teacher/class-detail/class-detail.
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+<<<<<<< HEAD
     TeacherComponent,
     DashboardTeachersComponent,
     ClassDetailComponent,
+=======
+    StudentsComponent,
+    DashboardStudentsComponent
+>>>>>>> 4846ebdebf5c29ea72064a97ce8e3c449c6ce573
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
