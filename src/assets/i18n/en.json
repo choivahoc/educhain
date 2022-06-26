@@ -1,9 +1,17 @@
 {
   "LOGIN": {
     "USERNAME": "Username",
+    "USER_ID": "Student/Teacher ID",
     "ROLE": "Role",
     "PASSWORD": "Password",
     "LOGIN": "Login",
-    "REGISTER": "Create new account"
+    "REGISTER": "Create new account",
+    "HAVE_ACCOUNT": "Already have account?",
+    "SIGN_UP" : "Sign up"
+  },
+
+  "MODAL" : {
+    "LEAVE": "The form has not been submitted yet, do you really want to leave page?",
+    "UPDATE_SUCCESS": "Update in successfully"
   }
 }

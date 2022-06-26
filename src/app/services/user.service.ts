@@ -58,10 +58,10 @@ export class UserService {
     );
   }
 
-  updateUser(userUpdate: any) {
-    const url = `${this.BASE_URL}/user/edit`;
+  updateUser(userUpdate: any, user_id: string) {
+    const url = `${this.BASE_URL}/user/${user_id}`;
     const body: any = userUpdate;
-    return this.httpClient.post<any>(url, body).pipe(
+    return this.httpClient.put<any>(url, body).pipe(
       catchError(this.handleError),
       // tap((user) => {
       //   localStorage.setItem("imageUser", JSON.stringify(user.user.image));
