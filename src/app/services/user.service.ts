@@ -24,7 +24,7 @@ export class UserService {
     JSON.parse(localStorage.getItem("token") || "null")
   );
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   public currentTokenValue(): string {
     return this.currentToken.value;

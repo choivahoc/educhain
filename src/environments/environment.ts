@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://eduapi.choivahoc.vn/v1',
 };
 
 /*

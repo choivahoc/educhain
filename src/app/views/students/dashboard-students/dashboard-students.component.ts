@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-dashboard-students',
@@ -16,7 +17,7 @@ export class DashboardStudentsComponent implements OnInit {
   }
   private _color = "light";
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   points = [
     { 'id': 'MH01', 'name': 'Math', 'number': '2', 'point': '7' },
@@ -44,6 +45,20 @@ export class DashboardStudentsComponent implements OnInit {
     { 'id': 'MH06', 'name': 'Math6', 'number': '2', 'point': '9' }
   ]
 
-  ngOnInit(): void { }
+  type = "student";
+  dataPoint: any;
+  infoStudent: any;
+
+  ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe(data => {
+      this.infoStudent = data.data;
+      console.log(this.infoStudent);
+    }
+    )
+  }
+  viewGraduate() {
+    console.log("1");
+
+  }
 
 }
