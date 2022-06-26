@@ -23,12 +23,12 @@ export class CardSettingsComponent implements OnInit {
       this.settingsForm.patchValue({
         // imageUrl: res.data.avatar,
         fullName: res.data.full_name,
-        gender: res.data.profile.gender === "nam" ? "male" : "female",
+        gender: res.data.profile.gender,
         email: res.data.email,
         address: res.data.profile.address,
         dateOfBirth: res.data.profile.date_of_birth,
         city: res.data.profile.province,
-        phone: "",
+        phone: res.data.profile.phone,
         identityCard: {
           no: res.data.citizen_identity_card.no,
           dateOfIssue: res.data.citizen_identity_card.date_of_issue,
@@ -57,12 +57,12 @@ export class CardSettingsComponent implements OnInit {
   formSubmit() {
     console.log(this.settingsForm.value);
     this.currentUser.email = this.settingsForm.value.email;
-    this.currentUser.full_name = this.settingsForm.value.full_name;
+    this.currentUser.full_name = this.settingsForm.value.fullName;
     this.currentUser.profile.address = this.settingsForm.value.address;
-    this.currentUser.profile.city = this.settingsForm.value.email;
-    this.currentUser.profile.date_of_birth = this.settingsForm.value.email;
-    this.currentUser.profile.gender = this.settingsForm.value.email;
-    this.currentUser.profile.phone = this.settingsForm.value.email;
+    this.currentUser.profile.city = this.settingsForm.value.city;
+    this.currentUser.profile.date_of_birth = this.settingsForm.value.dateOfBirth;
+    this.currentUser.profile.gender = this.settingsForm.value.gender;
+    this.currentUser.profile.phone = this.settingsForm.value.phone;
     this.currentUser.citizen_identity_card.date_of_exprity = this.settingsForm.value.identityCard.dateOfExprity;
     this.currentUser.citizen_identity_card.date_of_issue = this.settingsForm.value.identityCard.dateOfIssue;
     this.currentUser.citizen_identity_card.no = this.settingsForm.value.identityCard.no;
@@ -85,7 +85,7 @@ export class CardSettingsComponent implements OnInit {
     //     no: this.settingsForm.value.identityCard.no,
     //   },
     // };
-    this.userService.updateUser(this.currentUser).subscribe((data) => {
+    this.userService.updateUser(this.currentUser, this.currentUser.user_id).subscribe((data) => {
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
