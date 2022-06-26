@@ -88,7 +88,7 @@ export class CardSettingsComponent implements OnInit {
     this.userService.updateUser(this.currentUser, this.currentUser.user_id).subscribe((data) => {
       const Toast = Swal.mixin({
         toast: true,
-        position: "top-end",
+        position: "bottom-end",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
