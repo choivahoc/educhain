@@ -8,14 +8,19 @@ import { baseUrl } from 'src/app/services/base-url';
 @Injectable({
     providedIn: 'root',
 })
-export class StudentsService extends BaseApi {
+export class AdminService extends BaseApi {
 
     constructor(httpClient: HttpClient, @Inject(baseUrl) private hostUrl: string) {
         super(httpClient);
     }
 
-    getPoint(id: number): Observable<any> {
-        return this.httpClient.get<any>(`${this.hostUrl}/diplomas?diplomas_id=${id}`);
+    getDepartment(): Observable<any> {
+        return this.httpClient.get<any>(`${this.hostUrl}/departments`);
+
+    }
+
+    getMajors(id: number): Observable<any> {
+        return this.httpClient.get<any>(`${this.hostUrl}/majors?department_id=${id}`);
 
     }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { StudentsService } from 'src/app/services/students.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -17,48 +18,30 @@ export class DashboardStudentsComponent implements OnInit {
   }
   private _color = "light";
 
-  constructor(private userService: UserService) { }
-
-  points = [
-    { 'id': 'MH01', 'name': 'Math', 'number': '2', 'point': '7' },
-    { 'id': 'MH02', 'name': 'Math2', 'number': '2', 'point': '7' },
-    { 'id': 'MH03', 'name': 'Math3', 'number': '2', 'point': '7' },
-    { 'id': 'MH04', 'name': 'Math4', 'number': '2', 'point': '7' },
-    { 'id': 'MH05', 'name': 'Math5', 'number': '2', 'point': '7' },
-    { 'id': 'MH06', 'name': 'Math6', 'number': '2', 'point': '9' },
-    { 'id': 'MH01', 'name': 'Math', 'number': '2', 'point': '7' },
-    { 'id': 'MH02', 'name': 'Math2', 'number': '2', 'point': '7' },
-    { 'id': 'MH03', 'name': 'Math3', 'number': '2', 'point': '7' },
-    { 'id': 'MH04', 'name': 'Math4', 'number': '2', 'point': '7' },
-    { 'id': 'MH05', 'name': 'Math5', 'number': '2', 'point': '7' },
-    { 'id': 'MH06', 'name': 'Math6', 'number': '2', 'point': '9' },
-    { 'id': 'MH01', 'name': 'Math', 'number': '2', 'point': '7' },
-    { 'id': 'MH02', 'name': 'Math2', 'number': '2', 'point': '7' },
-    { 'id': 'MH03', 'name': 'Math3', 'number': '2', 'point': '7' },
-    { 'id': 'MH04', 'name': 'Math4', 'number': '2', 'point': '7' },
-    { 'id': 'MH05', 'name': 'Math5', 'number': '2', 'point': '7' },
-    { 'id': 'MH06', 'name': 'Math6', 'number': '2', 'point': '9' },
-    { 'id': 'MH02', 'name': 'Math2', 'number': '2', 'point': '7' },
-    { 'id': 'MH03', 'name': 'Math3', 'number': '2', 'point': '7' },
-    { 'id': 'MH04', 'name': 'Math4', 'number': '2', 'point': '7' },
-    { 'id': 'MH05', 'name': 'Math5', 'number': '2', 'point': '7' },
-    { 'id': 'MH06', 'name': 'Math6', 'number': '2', 'point': '9' }
-  ]
+  constructor(private userService: UserService, private studentsService: StudentsService) { }
 
   type = "student";
   dataPoint: any;
   infoStudent: any;
+  idDiplomas: any;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(data => {
       this.infoStudent = data.data;
-      console.log(this.infoStudent);
+      this.idDiplomas = this.infoStudent.diplomas[0].diplomas_id;
+      this.viewPoint(this.idDiplomas);
     }
     )
+
   }
   viewGraduate() {
-    console.log("1");
-
+    alert("Waiting")
+  }
+  viewPoint(id) {
+    this.studentsService.getPoint(id).subscribe(data => {
+      this.dataPoint = data.data[0].transcript;
+    }
+    )
   }
 
 }

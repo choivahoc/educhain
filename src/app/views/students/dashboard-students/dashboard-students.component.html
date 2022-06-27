@@ -42,8 +42,8 @@
         "
         type="button"
         (click)="viewGraduate()"
-        [disabled]="infoStudent.profile.graduate_active === 'not-graduate'"
       >
+        <!-- [disabled]="infoStudent.profile.graduate_active === 'not-graduate'" -->
         Xem bằng
       </button>
     </div>
@@ -163,7 +163,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of points; let i = index">
+        <tr *ngFor="let item of dataPoint; let i = index">
           <th
             class="
               border-t-0
@@ -196,7 +196,7 @@
               p-4
             "
           >
-            {{ item?.id }}
+            {{ item?.transcript_academic?.transcript_academic_id }}
           </td>
           <td
             class="
@@ -209,7 +209,11 @@
               p-4
             "
           >
-            {{ item?.name }}
+            {{
+              item?.transcript_academic_name
+                ? item?.transcript_academic_name
+                : "null"
+            }}
           </td>
           <td
             class="
@@ -222,7 +226,11 @@
               p-4
             "
           >
-            {{ item?.number }}
+            {{
+              item?.transcript_academic_number
+                ? item?.transcript_academic_number
+                : "1"
+            }}
           </td>
           <td
             class="

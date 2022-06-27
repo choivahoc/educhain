@@ -29,30 +29,17 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   submitForm() {
     this.authService.logIn(this.loginForm.value.username, this.loginForm.value.password, this.loginForm.value.role).subscribe((data) => {
-      // this.checkRole();
-      // if (this.dataRole === "student") {
       this.router.navigate(['student/dashboard'])
-      // }
-      // if (this.dataRole === "admin") {
-      // this.router.navigate(['admin/dashboard'])
-      // }
-    })
-  }
+      if (this.loginForm.value.role === "student") {
+        this.router.navigate(['student/dashboard'])
+      }
 
-  checkRole() {
-    let roleReceive: any;
-    this.userService.getCurrentUser().subscribe((data) => {
-      roleReceive = data.data.role_user
-      this.dataRole = data.data.role_user;
-      if (roleReceive.admin || roleReceive.manager) {
-        this.dataRole === "admin"
+      else if (this.loginForm.value.role === "admin") {
+        this.router.navigate(['admin/dashboard'])
       }
-      else if (roleReceive.student) {
-        this.dataRole === "student"
+      else {
+        this.router.navigate(['teacher/dashboard'])
       }
-      else
-        this.dataRole === "teacher"
-    }
-    )
+    })
   }
 }
