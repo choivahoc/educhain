@@ -46,13 +46,13 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardStudentsComponent },
     ],
   },
-    // student views
+    // teaher views
     {
       path: 'teacher',
       component: TeacherComponent,
       children: [
         { path: 'dashboard', component: DashboardTeachersComponent },
-        { path: 'class/:id', component: ClassDetailComponent },
+        { path: 'class', component: ClassDetailComponent },
       ],
     },
   // auth views

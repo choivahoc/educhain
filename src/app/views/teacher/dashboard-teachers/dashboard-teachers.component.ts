@@ -468,9 +468,10 @@ export class DashboardTeachersComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {}
+  ngOnInit() {
+   
+  }
   classDetail(classId: string) {
-    console.log("ok");
-    this.router.navigate([ "teacher/class"],{ queryParams: { id: classId }, relativeTo:this.route,  queryParamsHandling:"merge" });
+    this.router.navigate(['teacher/class'], {queryParams:{ id:classId}} )
   }
 }

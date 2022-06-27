@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-class-detail',
@@ -15,11 +16,21 @@ export class ClassDetailComponent implements OnInit {
     this._color = color !== "light" && color !== "dark" ? "light" : color;
   }
   private _color = "light";
-  constructor() { }
-
+  constructor(private route: ActivatedRoute, private router: Router) { }
+  classDetail:any;
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+
+      this.departments.forEach((department)=>{
+        department.class.forEach(item=>{
+          if(item.id == params['id']){
+            this.classDetail = item       
+          }
+        })
+      })
+    });
   }
-  
+
 
   departments = [
     {
@@ -31,7 +42,7 @@ export class ClassDetailComponent implements OnInit {
           students: [
             {
               MSSV: "01",
-              studentName: "Nguyen Van A",
+              studentName: "Nguyen Van A IT",
               gender: "male",
               age: "18",
               email: "anv@gmail.com",
