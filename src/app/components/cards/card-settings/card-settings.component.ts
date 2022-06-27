@@ -15,22 +15,20 @@ export class CardSettingsComponent implements OnInit {
   currentUser: IUser;
   url: any; //Angular 11, for stricter type
   msg = "";
-
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((res) => {
-      console.log(res);
       this.currentUser = res.data;
       this.settingsForm.patchValue({
         // imageUrl: res.data.avatar,
         fullName: res.data.full_name,
-        gender: res.data.profile.gender === "nam" ? "male" : "female",
+        gender: res.data.profile.gender,
         email: res.data.email,
         address: res.data.profile.address,
         dateOfBirth: res.data.profile.date_of_birth,
         city: res.data.profile.province,
-        phone: "",
+        phone: res.data.profile.phone,
         identityCard: {
           no: res.data.citizen_identity_card.no,
           dateOfIssue: res.data.citizen_identity_card.date_of_issue,
@@ -58,30 +56,39 @@ export class CardSettingsComponent implements OnInit {
 
   formSubmit() {
     console.log(this.settingsForm.value);
-
+    this.currentUser.email = this.settingsForm.value.email;
+    this.currentUser.full_name = this.settingsForm.value.fullName;
+    this.currentUser.profile.address = this.settingsForm.value.address;
+    this.currentUser.profile.city = this.settingsForm.value.city;
+    this.currentUser.profile.date_of_birth = this.settingsForm.value.dateOfBirth;
+    this.currentUser.profile.gender = this.settingsForm.value.gender;
+    this.currentUser.profile.phone = this.settingsForm.value.phone;
+    this.currentUser.citizen_identity_card.date_of_exprity = this.settingsForm.value.identityCard.dateOfExprity;
+    this.currentUser.citizen_identity_card.date_of_issue = this.settingsForm.value.identityCard.dateOfIssue;
+    this.currentUser.citizen_identity_card.no = this.settingsForm.value.identityCard.no;
+    
     this.isSubmit = true;
-    this.currentUser
-    const userUpdate = {
-      // avatar: "string",
-      email: this.settingsForm.value.email,
-      full_name: this.settingsForm.value.fullName,
-      profile: {
-        address: this.settingsForm.value.address,
-        city: this.settingsForm.value.city,
-        date_of_birth: this.settingsForm.value.dateOfBirth,
-        gender: this.settingsForm.value.gender,
-        phone: this.settingsForm.value.phone,
-      },
-      citizen_identity_card: {
-        date_of_exprity: this.settingsForm.value.identityCard.dateOfExprity,
-        date_of_issue: this.settingsForm.value.identityCard.dateOfIssue,
-        no: this.settingsForm.value.identityCard.no,
-      },
-    };
-    this.userService.updateUser(userUpdate).subscribe((data) => {
+    // const userUpdate = {
+    //   // avatar: "string",
+    //   email: this.settingsForm.value.email,
+    //   full_name: this.settingsForm.value.fullName,
+    //   profile: {
+    //     address: this.settingsForm.value.address,
+    //     city: this.settingsForm.value.city,
+    //     date_of_birth: this.settingsForm.value.dateOfBirth,
+    //     gender: this.settingsForm.value.gender,
+    //     phone: this.settingsForm.value.phone,
+    //   },
+    //   citizen_identity_card: {
+    //     date_of_exprity: this.settingsForm.value.identityCard.dateOfExprity,
+    //     date_of_issue: this.settingsForm.value.identityCard.dateOfIssue,
+    //     no: this.settingsForm.value.identityCard.no,
+    //   },
+    // };
+    this.userService.updateUser(this.currentUser, this.currentUser.user_id).subscribe((data) => {
       const Toast = Swal.mixin({
         toast: true,
-        position: "top-end",
+        position: "bottom-end",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,

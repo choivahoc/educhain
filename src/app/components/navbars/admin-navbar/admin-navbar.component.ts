@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -6,9 +6,10 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class AdminNavbarComponent implements OnInit {
   @Output() setShowNavbar = new EventEmitter<any>();
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   public showNavbar(): void {
     this.setShowNavbar.emit();

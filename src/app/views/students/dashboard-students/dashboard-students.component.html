@@ -1,5 +1,14 @@
 <div
-  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+  class="
+    relative
+    flex flex-col
+    min-w-0
+    break-words
+    w-full
+    mb-6
+    shadow-lg
+    rounded
+  "
   [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
 >
   <div class="rounded-t mb-0 px-4 py-3 border-0">
@@ -9,15 +18,34 @@
           class="font-semibold text-lg"
           [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
         >
-        Kết quả học tập
+          Kết quả học tập
         </h3>
       </div>
       <button
-          class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="button"
-        >
-          Xem bằng
-        </button>
+        class="
+          bg-indigo-500
+          text-white
+          active:bg-indigo-600
+          text-xs
+          font-bold
+          uppercase
+          px-3
+          py-1
+          rounded
+          outline-none
+          focus:outline-none
+          mr-1
+          mb-1
+          ease-linear
+          transition-all
+          duration-150
+        "
+        type="button"
+        (click)="viewGraduate()"
+        [disabled]="infoStudent.profile.graduate_active === 'not-graduate'"
+      >
+        Xem bằng
+      </button>
     </div>
   </div>
   <div class="block w-full overflow-x-auto">
@@ -26,7 +54,18 @@
       <thead>
         <tr>
           <th
-            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            class="
+              px-6
+              align-middle
+              border border-solid
+              py-3
+              text-xs
+              uppercase
+              border-l-0 border-r-0
+              whitespace-nowrap
+              font-semibold
+              text-left
+            "
             [ngClass]="
               color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
@@ -36,7 +75,18 @@
             STT
           </th>
           <th
-            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            class="
+              px-6
+              align-middle
+              border border-solid
+              py-3
+              text-xs
+              uppercase
+              border-l-0 border-r-0
+              whitespace-nowrap
+              font-semibold
+              text-left
+            "
             [ngClass]="
               color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
@@ -45,9 +95,20 @@
           >
             Mã môn học
           </th>
-          
+
           <th
-            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            class="
+              px-6
+              align-middle
+              border border-solid
+              py-3
+              text-xs
+              uppercase
+              border-l-0 border-r-0
+              whitespace-nowrap
+              font-semibold
+              text-left
+            "
             [ngClass]="
               color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
@@ -58,7 +119,18 @@
           </th>
 
           <th
-            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            class="
+              px-6
+              align-middle
+              border border-solid
+              py-3
+              text-xs
+              uppercase
+              border-l-0 border-r-0
+              whitespace-nowrap
+              font-semibold
+              text-left
+            "
             [ngClass]="
               color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
@@ -68,7 +140,18 @@
             Số tín chỉ
           </th>
           <th
-            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            class="
+              px-6
+              align-middle
+              border border-solid
+              py-3
+              text-xs
+              uppercase
+              border-l-0 border-r-0
+              whitespace-nowrap
+              font-semibold
+              text-left
+            "
             [ngClass]="
               color === 'light'
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
@@ -82,34 +165,77 @@
       <tbody>
         <tr *ngFor="let item of points; let i = index">
           <th
-            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+            class="
+              border-t-0
+              px-6
+              align-middle
+              border-l-0 border-r-0
+              text-xs
+              whitespace-nowrap
+              p-4
+              text-left
+              flex
+              items-center
+            "
           >
             <span
               class="ml-3 font-bold"
               [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
             >
-              {{i + 1}}
+              {{ i + 1 }}
             </span>
           </th>
           <td
-            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            class="
+              border-t-0
+              px-6
+              align-middle
+              border-l-0 border-r-0
+              text-xs
+              whitespace-nowrap
+              p-4
+            "
           >
-            {{item?.id}}
+            {{ item?.id }}
           </td>
           <td
-            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            class="
+              border-t-0
+              px-6
+              align-middle
+              border-l-0 border-r-0
+              text-xs
+              whitespace-nowrap
+              p-4
+            "
           >
-          {{item?.name}}
+            {{ item?.name }}
           </td>
           <td
-            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            class="
+              border-t-0
+              px-6
+              align-middle
+              border-l-0 border-r-0
+              text-xs
+              whitespace-nowrap
+              p-4
+            "
           >
-          {{item?.number}}
+            {{ item?.number }}
           </td>
           <td
-            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            class="
+              border-t-0
+              px-6
+              align-middle
+              border-l-0 border-r-0
+              text-xs
+              whitespace-nowrap
+              p-4
+            "
           >
-            {{item?.point}}
+            {{ item?.point }}
           </td>
         </tr>
       </tbody>

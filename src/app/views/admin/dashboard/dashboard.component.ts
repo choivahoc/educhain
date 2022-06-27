@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-dashboard",
@@ -7,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 export class DashboardComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private userService: UserService) { }
   department = [
     { 'id': 'K01', 'name': 'Khoa CNTT1', 'nganh': [{ 'id': 'N01', 'name': 'Ngành 01' }, { 'id': 'N02', 'name': 'Ngành 02' }, { 'id': 'N01', 'name': 'Ngành 03' }] },
     { 'id': 'K02', 'name': 'Khoa CNTT2', 'nganh': [{ 'id': 'N01', 'name': 'Ngành 01' }, { 'id': 'N02', 'name': 'Ngành 02' }, { 'id': 'N01', 'name': 'Ngành 03' }] },
@@ -25,10 +26,14 @@ export class DashboardComponent implements OnInit {
     { 'id': 'L06', 'name': 'CNTT6' },
   ]
 
-  ngOnInit() {
-    let a;
-    this.department.findIndex(data => data.nganh = a)
-    console.log(a);
+  type = "student";
+  infoAdmin: any;
 
+  ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe(data => {
+      this.infoAdmin = data.data;
+      console.log(this.infoAdmin);
+    }
+    )
   }
 }

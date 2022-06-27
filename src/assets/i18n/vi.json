@@ -1,9 +1,17 @@
 {
   "LOGIN": {
     "USERNAME": "Tài khoản",
+    "USER_ID": "Mã sinh viên/giáo viên",
     "ROLE": "Vai trò",
     "PASSWORD": "Mật khẩu",
     "LOGIN": "Đăng nhập",
-    "REGISTER": "Tạo tài khoản"
+    "REGISTER": "Tạo tài khoản",
+    "SIGN_UP" : "Đăng ký",
+    "HAVE_ACCOUNT": "Đã có tài khoản?"
+  },
+
+  "MODAL" : {
+    "LEAVE": "Bạn có muốn rời khỏi trang không?",
+    "UPDATE_SUCCESS": "Cập nhật thành công"
   }
 }
