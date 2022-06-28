@@ -13,7 +13,7 @@ export class CardSettingsComponent implements OnInit {
   isSubmit: boolean = false;
   selectedImage: File = null;
   currentUser: IUser;
-  url: any; //Angular 11, for stricter type
+  url: any;
   msg = "";
   constructor(private fb: FormBuilder, private userService: UserService) {}
 
@@ -137,7 +137,6 @@ export class CardSettingsComponent implements OnInit {
       confirmButtonText: "Yes",
       confirmButtonColor: "#fa6342",
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.formSubmit();
       }
