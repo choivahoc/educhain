@@ -66,7 +66,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
-    canActivate: [NoAuthGuard]
+    canActivate: [AuthGuard]
   },
   //diplomas
   {
@@ -76,7 +76,6 @@ const routes: Routes = [
       import('./views/diplomas/diplomas.module').then(
         (m) => m.DiplomasModule
       ),
-    canActivate: [NoAuthGuard]
   },
   // no layout views
   // { path: 'profile', component: ProfileComponent },

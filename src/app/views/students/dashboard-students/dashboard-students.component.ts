@@ -36,9 +36,11 @@ export class DashboardStudentsComponent implements OnInit {
 
   }
   viewGraduate(idDiplomas) {
-    this.router.navigate(['diplomas'], {
-      queryParams: { id: idDiplomas }
-    });
+    this.router.navigate(['diplomas']
+      , {
+        queryParams: { id: idDiplomas }
+      }
+    );
   }
   viewPoint(id) {
     this.studentsService.getPoint(id).subscribe(data => {
