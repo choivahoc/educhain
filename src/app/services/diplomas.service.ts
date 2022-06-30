@@ -8,7 +8,7 @@ import { baseUrl } from 'src/app/services/base-url';
 @Injectable({
     providedIn: 'root',
 })
-export class StudentsService extends BaseApi {
+export class DiplomasService extends BaseApi {
 
     constructor(httpClient: HttpClient, @Inject(baseUrl) private hostUrl: string) {
         super(httpClient);

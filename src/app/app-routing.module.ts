@@ -24,6 +24,7 @@ import { LandingComponent } from './views/landing/landing.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { DashboardStudentsComponent } from './views/students/dashboard-students/dashboard-students.component';
 import { SettingGuard } from './services/setting.guard';
+import { DiplomasComponent } from './views/diplomas/diplomas.component';
 
 // no layouts views
 
@@ -65,7 +66,16 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
-    canActivate: [NoAuthGuard]
+    canActivate: [AuthGuard]
+  },
+  //diplomas
+  {
+    path: 'diplomas',
+    component: DiplomasComponent,
+    loadChildren: () =>
+      import('./views/diplomas/diplomas.module').then(
+        (m) => m.DiplomasModule
+      ),
   },
   // no layout views
   // { path: 'profile', component: ProfileComponent },

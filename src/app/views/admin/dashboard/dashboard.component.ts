@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AdminService } from "src/app/services/admin.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from "src/app/services/user.service";
 export class DashboardComponent implements OnInit {
 
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private adminService: AdminService) { }
   department = [
     { 'id': 'K01', 'name': 'Khoa CNTT1', 'nganh': [{ 'id': 'N01', 'name': 'Ngành 01' }, { 'id': 'N02', 'name': 'Ngành 02' }, { 'id': 'N01', 'name': 'Ngành 03' }] },
     { 'id': 'K02', 'name': 'Khoa CNTT2', 'nganh': [{ 'id': 'N01', 'name': 'Ngành 01' }, { 'id': 'N02', 'name': 'Ngành 02' }, { 'id': 'N01', 'name': 'Ngành 03' }] },
@@ -28,12 +29,32 @@ export class DashboardComponent implements OnInit {
 
   type = "student";
   infoAdmin: any;
+  listDepartment: any;
+  idDepartment: any;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(data => {
       this.infoAdmin = data.data;
-      console.log(this.infoAdmin);
+      this.viewListDepartment();
     }
     )
+  }
+
+  viewListDepartment() {
+    this.adminService.getDepartment().subscribe(data => {
+      this.listDepartment = data.data;
+      // this.viewMajor(this.listDepartment.department_id)
+      for (let i = 0; i < this.listDepartment.length; i++) {
+        this.idDepartment = this.listDepartment[i].department_id;
+        this.viewMajor(this.idDepartment);
+      }
+    }
+    )
+  }
+
+  viewMajor(id) {
+    this.adminService.getMajors(id).subscribe(data => {
+      console.log(data);
+    })
   }
 }
