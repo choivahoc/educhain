@@ -34,7 +34,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'settings', component: SettingsComponent,  canDeactivate: [SettingGuard] },
+      { path: 'settings', component: SettingsComponent, canDeactivate: [SettingGuard] },
       { path: 'tables', component: TablesComponent },
     ],
     canActivate: [AuthGuard],
@@ -47,15 +47,15 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardStudentsComponent },
     ],
   },
-    // teaher views
-    {
-      path: 'teacher',
-      component: TeacherComponent,
-      children: [
-        { path: 'dashboard', component: DashboardTeachersComponent },
-        { path: 'class', component: ClassDetailComponent },
-      ],
-    },
+  // teaher views
+  {
+    path: 'teacher',
+    component: TeacherComponent,
+    children: [
+      { path: 'dashboard', component: DashboardTeachersComponent },
+      { path: 'class', component: ClassDetailComponent },
+    ],
+  },
   // auth views
   {
     path: 'auth',

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TeacherService } from 'src/app/services/teacher.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-class-detail',
@@ -8,478 +10,47 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ClassDetailComponent implements OnInit {
 
-  @Input()
-  get color(): string {
-    return this._color;
-  }
-  set color(color: string) {
-    this._color = color !== "light" && color !== "dark" ? "light" : color;
-  }
-  private _color = "light";
-  constructor(private route: ActivatedRoute, private router: Router) { }
-  classDetail:any;
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
 
-      this.departments.forEach((department)=>{
-        department.class.forEach(item=>{
-          if(item.id == params['id']){
-            this.classDetail = item       
-          }
-        })
+  listDepartment: any[];
+  className: string = '';
+  constructor(private route: ActivatedRoute,
+     private router: Router, 
+     private userService: UserService,
+     private teacherService: TeacherService) { }
+  listStudents: any[];
+  displayStudentDetail: boolean = false;
+  studentDetail: any;
+  listdiplomas:any[];
+  ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      this.className = params['className'];
+      this.teacherService.getStudentsByClass(this.className).subscribe(data => {
+        this.listStudents = data.data
+        console.log(this.listStudents);
       })
     });
+
+    this.teacherService.getDepartment().subscribe(data => {
+      this.listDepartment = data.data;
+    })
   }
 
+  detailStudent(userId: string) {
+    this.displayStudentDetail = true;
+    this.teacherService.getStudentDetail(this.className, userId).subscribe(data => {
+      this.studentDetail = data.data[0]   
+      console.log( data.data[0] );
+      
+    })
 
-  departments = [
-    {
-      departmentName: "IT",
-      class: [
-        {
-          id: "IT1",
-          name: "Class IT1",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A IT",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-        {
-          id: "IT2",
-          name: "Class IT2",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-        {
-          id: "IT3",
-          name: "Class IT3",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      departmentName: "English",
-      class: [
-        {
-          id: "E1",
-          name: "Class English 1",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-        {
-          id: "E2",
-          name: "Class English 2",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-        {
-          id: "E3",
-          name: "Class English 3",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      departmentName: "Music",
-      class: [
-        {
-          id: "M1",
-          name: "Class Music1",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-        {
-          id: "M2",
-          name: "Class Music2",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-        {
-          id: "M3",
-          name: "Class Music3",
-          students: [
-            {
-              MSSV: "01",
-              studentName: "Nguyen Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "02",
-              studentName: "Luu Ba C",
-              gender: "male",
-              age: "20",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "03",
-              studentName: "Cao Nhat D ",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "04",
-              studentName: "Bui Van A",
-              gender: "male",
-              age: "18",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "05",
-              studentName: "Nguyen Thi S",
-              gender: "female",
-              age: "21",
-              email: "anv@gmail.com",
-            },
-            {
-              MSSV: "06",
-              studentName: "Cao Van F",
-              gender: "female",
-              age: "19",
-              email: "anv@gmail.com",
-            },
-          ],
-        },
-      ],
-    },
-  ];
-
+    
+    
+    this.teacherService.getdiplomas().subscribe(diplomas => {
+        console.log(diplomas);
+        this.listdiplomas = diplomas.data.filter(diploma => diploma.user_id == userId )
+        
+    })   
+; 
+  }
 }

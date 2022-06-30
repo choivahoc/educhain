@@ -106,7 +106,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     DashboardTeachersComponent,
     ClassDetailComponent,
     StudentsComponent,
-    DashboardStudentsComponent
+    DashboardStudentsComponent,
   ],
   imports: [
     BrowserModule,
