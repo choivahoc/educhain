@@ -66,7 +66,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
-    canActivate: [AuthGuard]
+    canActivate: [NoAuthGuard]
   },
   //diplomas
   {

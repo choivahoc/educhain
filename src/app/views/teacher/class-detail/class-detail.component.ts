@@ -9,18 +9,17 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./class-detail.component.css']
 })
 export class ClassDetailComponent implements OnInit {
-
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService,
+    private teacherService: TeacherService) { }
 
   listDepartment: any[];
   className: string = '';
-  constructor(private route: ActivatedRoute,
-     private router: Router, 
-     private userService: UserService,
-     private teacherService: TeacherService) { }
   listStudents: any[];
   displayStudentDetail: boolean = false;
   studentDetail: any;
-  listdiplomas:any[];
+  listdiplomas: any[];
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
@@ -39,18 +38,12 @@ export class ClassDetailComponent implements OnInit {
   detailStudent(userId: string) {
     this.displayStudentDetail = true;
     this.teacherService.getStudentDetail(this.className, userId).subscribe(data => {
-      this.studentDetail = data.data[0]   
-      console.log( data.data[0] );
-      
-    })
-
-    
-    
+      this.studentDetail = data.data[0]
+      console.log(data.data[0]);
+    });
     this.teacherService.getdiplomas().subscribe(diplomas => {
-        console.log(diplomas);
-        this.listdiplomas = diplomas.data.filter(diploma => diploma.user_id == userId )
-        
-    })   
-; 
+      console.log(diplomas);
+      this.listdiplomas = diplomas.data.filter(diploma => diploma.user_id == userId)
+    });
   }
 }
