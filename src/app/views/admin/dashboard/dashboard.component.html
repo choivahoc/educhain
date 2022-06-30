@@ -7,7 +7,7 @@
   </div>
 </div>
 <div class="flex flex-wrap mt-4">
-  <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+  <div class="w-full xl:w-4/12 mb-12 xl:mb-0 px-4">
     <div
       class="
         relative
@@ -147,10 +147,118 @@
                   whitespace-nowrap
                   p-4
                 "
+                (click)="getMajor(item?.department_id)"
               >
                 {{ item?.department_name }}
               </td>
-              <!-- <td
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="w-full xl:w-4/12 px-4">
+    <div
+      class="
+        relative
+        flex flex-col
+        min-w-0
+        break-words
+        bg-white
+        w-full
+        mb-6
+        shadow-lg
+        rounded
+      "
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <h3 class="font-semibold text-base text-blueGray-700">
+            Danh sách khoa
+          </h3>
+        </div>
+      </div>
+      <div class="block w-full overflow-x-auto">
+        <table class="items-center w-full bg-transparent border-collapse">
+          <thead class="thead-light">
+            <tr>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                "
+              >
+                STT
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                "
+              >
+                Mã Lớp
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                Tên Lớp
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let item of listMajor; let i = index"
+              (click)="getClass(item?._class)"
+            >
+              <th
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                  text-left
+                "
+              >
+                {{ i + 1 }}
+              </th>
+              <td
                 class="
                   border-t-0
                   px-6
@@ -161,8 +269,21 @@
                   p-4
                 "
               >
-                {{ item?.name }}
-              </td> -->
+                {{ item?.major_id }}
+              </td>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                {{ item?.major_name }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -252,7 +373,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of class; let i = index">
+            <tr
+              *ngFor="let class of listClass; let i = index"
+              (click)="getStudent(class?.class_name)"
+            >
               <th
                 class="
                   border-t-0
@@ -278,7 +402,7 @@
                   p-4
                 "
               >
-                {{ item?.id }}
+                {{ class?.class_id }}
               </td>
               <td
                 class="
@@ -291,7 +415,453 @@
                   p-4
                 "
               >
-                {{ item?.name }}
+                {{ class?.class_name }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student -->
+
+  <div class="w-full xl:w-12/12 px-4">
+    <div
+      class="
+        relative
+        flex flex-col
+        min-w-0
+        break-words
+        bg-white
+        w-full
+        mb-6
+        shadow-lg
+        rounded
+      "
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <h3 class="font-semibold text-base text-blueGray-700">
+            Danh sách sinh viên
+          </h3>
+        </div>
+      </div>
+      <div class="block w-full overflow-x-auto">
+        <table class="items-center w-full bg-transparent border-collapse">
+          <thead class="thead-light">
+            <tr>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                "
+              >
+                STT
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                "
+              >
+                Tên sinh viên
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                Giới tính
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                Năm sinh
+              </th>
+
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of listStudent; let i = index">
+              <th
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                  text-left
+                "
+              >
+                {{ i + 1 }}
+              </th>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                {{ student?.full_name }}
+              </td>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                {{ student?.gender }}
+              </td>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                {{ student?.date_of_birth }}
+              </td>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                <button
+                  (click)="detailStudent(student?.user_id)"
+                  class="
+                    bg-indigo-500
+                    text-white
+                    active:bg-indigo-600
+                    font-bold
+                    uppercase
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    shadow
+                    hover:shadow-md
+                    outline-none
+                    focus:outline-none
+                    mr-1
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                >
+                  Chi tiết</button
+                >{{ student?.class_name }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Diplomas -->
+
+  <div class="w-full xl:w-12/12 px-4">
+    <div
+      class="
+        relative
+        flex flex-col
+        min-w-0
+        break-words
+        bg-white
+        w-full
+        mb-6
+        shadow-lg
+        rounded
+      "
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <h3 class="font-semibold text-base text-blueGray-700">
+            Thông tin bằng
+          </h3>
+        </div>
+      </div>
+      <div class="block w-full overflow-x-auto">
+        <table class="items-center w-full bg-transparent border-collapse">
+          <thead class="thead-light">
+            <tr>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                "
+              >
+                STT
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                "
+              >
+                Mã bằng
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                Xếp loại
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                Ngày cấp
+              </th>
+
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let diplomas of listDiplomas; let i = index">
+              <th
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                  text-left
+                "
+              >
+                {{ i + 1 }}
+              </th>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                {{ diplomas?.diplomas_id }}
+              </td>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                {{ diplomas?.academic_ability }}
+              </td>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                {{ diplomas?.awarded_date }}
+              </td>
+              <td
+                class="
+                  border-t-0
+                  px-6
+                  align-middle
+                  border-l-0 border-r-0
+                  text-xs
+                  whitespace-nowrap
+                  p-4
+                "
+              >
+                <button
+                  (click)="actionDiplomas()"
+                  class="
+                    bg-indigo-500
+                    text-white
+                    active:bg-indigo-600
+                    font-bold
+                    uppercase
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    shadow
+                    hover:shadow-md
+                    outline-none
+                    focus:outline-none
+                    mr-1
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                >
+                  Cấp bằng
+                </button>
               </td>
             </tr>
           </tbody>
