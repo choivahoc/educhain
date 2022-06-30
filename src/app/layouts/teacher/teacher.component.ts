@@ -9,9 +9,9 @@ export class TeacherComponent implements OnInit {
 
   showNavbar = true;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   public setShowNavbar(): void {
     this.showNavbar = !this.showNavbar;

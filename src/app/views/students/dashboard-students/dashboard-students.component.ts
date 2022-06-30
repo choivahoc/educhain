@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentsService } from 'src/app/services/students.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -18,7 +19,7 @@ export class DashboardStudentsComponent implements OnInit {
   }
   private _color = "light";
 
-  constructor(private userService: UserService, private studentsService: StudentsService) { }
+  constructor(private userService: UserService, private studentsService: StudentsService, private router: Router) { }
 
   type = "student";
   dataPoint: any;
@@ -34,8 +35,12 @@ export class DashboardStudentsComponent implements OnInit {
     )
 
   }
-  viewGraduate() {
-    alert("Waiting")
+  viewGraduate(idDiplomas) {
+    this.router.navigate(['diplomas']
+      , {
+        queryParams: { id: idDiplomas }
+      }
+    );
   }
   viewPoint(id) {
     this.studentsService.getPoint(id).subscribe(data => {

@@ -1,15 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { AdminService } from "src/app/services/admin.service";
+import { TeacherService } from "src/app/services/teacher.service";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
 
-  constructor(private userService: UserService, private adminService: AdminService) { }
+  constructor(private userService: UserService, private adminService: AdminService, private teacherService: TeacherService) { }
   department = [
     { 'id': 'K01', 'name': 'Khoa CNTT1', 'nganh': [{ 'id': 'N01', 'name': 'Ngành 01' }, { 'id': 'N02', 'name': 'Ngành 02' }, { 'id': 'N01', 'name': 'Ngành 03' }] },
     { 'id': 'K02', 'name': 'Khoa CNTT2', 'nganh': [{ 'id': 'N01', 'name': 'Ngành 01' }, { 'id': 'N02', 'name': 'Ngành 02' }, { 'id': 'N01', 'name': 'Ngành 03' }] },
@@ -31,6 +33,10 @@ export class DashboardComponent implements OnInit {
   infoAdmin: any;
   listDepartment: any;
   idDepartment: any;
+  listMajor: any;
+  listClass: any;
+  listStudent: any;
+  listDiplomas: any;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(data => {
@@ -43,18 +49,35 @@ export class DashboardComponent implements OnInit {
   viewListDepartment() {
     this.adminService.getDepartment().subscribe(data => {
       this.listDepartment = data.data;
-      // this.viewMajor(this.listDepartment.department_id)
       for (let i = 0; i < this.listDepartment.length; i++) {
         this.idDepartment = this.listDepartment[i].department_id;
-        this.viewMajor(this.idDepartment);
       }
     }
     )
   }
 
-  viewMajor(id) {
+  getMajor(id) {
     this.adminService.getMajors(id).subscribe(data => {
-      console.log(data);
+      this.listMajor = data.data;
     })
+  }
+
+  getClass(listClass) {
+    this.listClass = listClass;
+  }
+
+  getStudent(id) {
+    this.teacherService.getStudentsByClass(id).subscribe(data => {
+      this.listStudent = data.data
+    })
+  }
+
+  detailStudent(id) {
+    this.teacherService.getdiplomas().subscribe(diplomas => {
+      this.listDiplomas = diplomas.data.filter(diploma => diploma.user_id === id)
+    })
+  }
+  actionDiplomas() {
+    alert("Pending...")
   }
 }

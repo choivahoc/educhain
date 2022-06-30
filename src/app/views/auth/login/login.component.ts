@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   submitForm() {
+
     this.authService.logIn(this.loginForm.value.username, this.loginForm.value.password, this.loginForm.value.role).subscribe((data) => {
-      this.router.navigate(['student/dashboard'])
       if (this.loginForm.value.role === "student") {
         this.router.navigate(['student/dashboard'])
       }

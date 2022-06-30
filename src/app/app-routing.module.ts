@@ -24,6 +24,7 @@ import { LandingComponent } from './views/landing/landing.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { DashboardStudentsComponent } from './views/students/dashboard-students/dashboard-students.component';
 import { SettingGuard } from './services/setting.guard';
+import { DiplomasComponent } from './views/diplomas/diplomas.component';
 
 // no layouts views
 
@@ -34,7 +35,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'settings', component: SettingsComponent,  canDeactivate: [SettingGuard] },
+      { path: 'settings', component: SettingsComponent, canDeactivate: [SettingGuard] },
       { path: 'tables', component: TablesComponent },
     ],
     canActivate: [AuthGuard],
@@ -47,15 +48,15 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardStudentsComponent },
     ],
   },
-    // student views
-    {
-      path: 'teacher',
-      component: TeacherComponent,
-      children: [
-        { path: 'dashboard', component: DashboardTeachersComponent },
-        { path: 'class/:id', component: ClassDetailComponent },
-      ],
-    },
+  // teaher views
+  {
+    path: 'teacher',
+    component: TeacherComponent,
+    children: [
+      { path: 'dashboard', component: DashboardTeachersComponent },
+      { path: 'class', component: ClassDetailComponent },
+    ],
+  },
   // auth views
   {
     path: 'auth',
@@ -66,6 +67,15 @@ const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
     canActivate: [NoAuthGuard]
+  },
+  //diplomas
+  {
+    path: 'diplomas',
+    component: DiplomasComponent,
+    loadChildren: () =>
+      import('./views/diplomas/diplomas.module').then(
+        (m) => m.DiplomasModule
+      ),
   },
   // no layout views
   // { path: 'profile', component: ProfileComponent },
