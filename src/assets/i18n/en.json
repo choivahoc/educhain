@@ -5,13 +5,44 @@
     "ROLE": "Role",
     "PASSWORD": "Password",
     "LOGIN": "Login",
+    "LOGOUT": "Logout",
     "REGISTER": "Create new account",
     "HAVE_ACCOUNT": "Already have account?",
-    "SIGN_UP" : "Sign up"
+    "SIGN_UP" : "Sign up",
+    "USERNAME_REQUIRED": "Username must required!",
+    "ROLE_REQUIRED": "Role must required!",
+    "PASSWORD_REQUIRED": "Password must required!",
+    "CHOOSE_ROLE": "Choose role...",
+    "CHOOSE_STUDENT": "Student",
+    "CHOOSE_TEACHER": "Teacher",
+    "CHOOSE_ADMIN": "Admin"
   },
 
   "MODAL" : {
     "LEAVE": "The form has not been submitted yet, do you really want to leave page?",
     "UPDATE_SUCCESS": "Update in successfully"
+  },
+
+  "SETTING" : {
+    "PERSONAL_INFORMATION" : "Personal Information",
+    "BASIC_INFORMATION" : "Basic Information",
+    "IMAGE" : "Image",
+    "CHOOSE_IMAGE" : "Choose image...",
+    "NAME" : "Full Name",
+    "GENDER" : "Gender",
+    "MALE" : "Male",
+    "FEMALE" : "Female",
+    "DATE_OF_BIRTH" : "Date of birth",
+    "CONTACT_INFORMATION" : "Contact Information",
+    "ADDRESS" : "Address",
+    "PHONE" : "Phone number",
+    "ID" : "ID",
+    "NO" : "No",
+    "DATE_OF_ISSUE" : "Date of issue",
+    "DATE_OF_EXPRITY" : "Date of expiry",
+    "UPDATE" : "Update"
+  },
+  "HEADER" : {
+    "PERSONAL_INFORMATION" : "My profile"
   }
 }

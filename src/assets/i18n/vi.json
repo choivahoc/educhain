@@ -5,13 +5,44 @@
     "ROLE": "Vai trò",
     "PASSWORD": "Mật khẩu",
     "LOGIN": "Đăng nhập",
+    "LOGOUT": "Đăng xuất",
     "REGISTER": "Tạo tài khoản",
     "SIGN_UP" : "Đăng ký",
-    "HAVE_ACCOUNT": "Đã có tài khoản?"
+    "HAVE_ACCOUNT": "Đã có tài khoản?",
+    "USERNAME_REQUIRED": "Tài khoản không được để trống!",
+    "ROLE_REQUIRED": "Vai trò không được để trống!",
+    "PASSWORD_REQUIRED": "Mật khẩu không được để trống!",
+    "CHOOSE_ROLE": "Chọn vai trò...",
+    "CHOOSE_STUDENT": "Sinh viên",
+    "CHOOSE_TEACHER": "Giáo viên",
+    "CHOOSE_ADMIN": "Quản trị viên"
   },
 
   "MODAL" : {
     "LEAVE": "Bạn có muốn rời khỏi trang không?",
     "UPDATE_SUCCESS": "Cập nhật thành công"
+  },
+
+  "SETTING" : {
+    "PERSONAL_INFORMATION" : "Thông tin người dùng",
+    "BASIC_INFORMATION" : "Thông tin cơ bản",
+    "IMAGE" : "Ảnh",
+    "CHOOSE_IMAGE" : "Chọn ảnh...",
+    "NAME" : "Họ và tên",
+    "GENDER" : "Giới tính",
+    "MALE" : "Nam",
+    "FEMALE" : "Nữ",
+    "DATE_OF_BIRTH" : "Ngày sinh",
+    "CONTACT_INFORMATION" : "Thông tin liên lạc",
+    "Address" : "Địa chỉ",
+    "PHONE" : "Số điện thọai",
+    "ID" : "CMND/CCCD",
+    "NO" : "Số",
+    "DATE_OF_ISSUE" : "Ngày cấp",
+    "DATE_OF_EXPRITY" : "Ngày hết hạn",
+    "UPDATE" : "Cập nhật"
+  },
+  "HEADER" : {
+    "PERSONAL_INFORMATION" : "Thông tin cá nhân"
   }
 }

@@ -31,7 +31,7 @@
                   loginForm.get('username')?.errors?.required &&
                   loginForm.get('username')?.touched
                 "
-                >Tài khoản không được để trống!</small
+                >{{'LOGIN.USERNAME_REQUIRED' | translate}}</small
               >
             </div>
 
@@ -48,10 +48,10 @@
                 formControlName="role"
                 aria-describedby="roleHelp"
               >
-                <option value="" disabled selected>Chọn vai trò</option>
-                <option value="student">Sinh viên</option>
-                <option value="teacher">Giáo viên</option>
-                <option value="admin">Quản trị viên</option>
+                <option value="" disabled selected>{{'LOGIN.CHOOSE_ROLE' | translate}}</option>
+                <option value="student">{{'LOGIN.CHOOSE_STUDENT' | translate}}</option>
+                <option value="teacher">{{'LOGIN.CHOOSE_TEACHER' | translate}}</option>
+                <option value="admin">{{'LOGIN.CHOOSE_ADMIN' | translate}}</option>
               </select>
               <small
                 id="roleHelp"
@@ -60,7 +60,7 @@
                   loginForm.get('role')?.errors?.required &&
                   loginForm.get('role')?.touched
                 "
-                >Vai trò không được để trống!</small
+                >{{'LOGIN.ROLE_REQUIRED' | translate}}</small
               >
             </div>
 
@@ -85,7 +85,7 @@
                   loginForm.get('password')?.errors?.required &&
                   loginForm.get('password')?.touched
                 "
-                >Mật khẩu không được để trống!</small
+                >{{'LOGIN.PASSWORD_REQUIRED' | translate}}</small
               >
             </div>
             <!-- <div>
