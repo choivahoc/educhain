@@ -13,5 +13,40 @@
   "MODAL" : {
     "LEAVE": "The form has not been submitted yet, do you really want to leave page?",
     "UPDATE_SUCCESS": "Update in successfully"
+  },
+
+  "DASHBOARD": {
+    "SCORE_BOARD": "Academic transcript",
+    "STT": "No",
+    "SUBJECT_ID": "Subject code",
+    "SCORE_NAME": "Subject name",
+    "CREDIT": "Credits",
+    "POINT": "Mark",
+    "DEPARTMENT": "List department",
+    "DEPARTMENT_ID": "Department code",
+    "DEPARTMENT_NAME": "Department name",
+    "MAJORS": "List major",
+    "MAJORS_ID": "Major code",
+    "MAJORS_NAME": "Major name",
+    "CLASS": "List class",
+    "CLASS_ID": "Class code",
+    "CLASS_NAME": "Class name",
+    "ACTION": "Action"
+  },
+
+  "STUDENT":{
+    "LIST": "List student",
+    "STUDENT_ID": "Student code",
+    "STUDENT_NAME": "Student name",
+    "BIRTH_DAY":"Date of birth",
+    "GENDER": "Gender",
+    "MODE": "Mode of study"
+  },
+  "DIPLOMAS":{
+    "VIEW": "View diplomas",
+    "DIPLOMAS_ID": "Diplomas code",
+    "RANK":"Graduation rank",
+    "GPA": "GPA",
+    "DATE": "Date of issue"
   }
 }

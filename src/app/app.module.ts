@@ -58,7 +58,7 @@ import { TeacherComponent } from "./layouts/teacher/teacher.component";
 import { DashboardTeachersComponent } from "./views/teacher/dashboard-teachers/dashboard-teachers.component";
 import { ClassDetailComponent } from "./views/teacher/class-detail/class-detail.component";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { StudentsComponent } from './layouts/students/students/students.component';
 import { DashboardStudentsComponent } from "./views/students/dashboard-students/dashboard-students.component";
 
@@ -117,8 +117,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     })
   ],
   providers: [
