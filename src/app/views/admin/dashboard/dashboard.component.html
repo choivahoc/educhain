@@ -24,7 +24,7 @@
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <h3 class="font-semibold text-base text-blueGray-700">
-            Danh sách khoa
+            {{ "DASHBOARD.DEPARTMENT" | translate }}
           </h3>
         </div>
       </div>
@@ -48,7 +48,7 @@
                   text-left
                 "
               >
-                STT
+                {{ "DASHBOARD.STT" | translate }}
               </th>
               <th
                 class="
@@ -66,7 +66,7 @@
                   text-left
                 "
               >
-                Mã Khoa
+                {{ "DASHBOARD.DEPARTMENT_ID" | translate }}
               </th>
               <th
                 class="
@@ -85,27 +85,8 @@
                   min-w-140-px
                 "
               >
-                Tên Khoa
+                {{ "DASHBOARD.DEPARTMENT_NAME" | translate }}
               </th>
-              <!-- <th
-                class="
-                  px-6
-                  bg-blueGray-50
-                  text-blueGray-500
-                  align-middle
-                  border border-solid border-blueGray-100
-                  py-3
-                  text-xs
-                  uppercase
-                  border-l-0 border-r-0
-                  whitespace-nowrap
-                  font-semibold
-                  text-left
-                  min-w-140-px
-                "
-              >
-                Tên Ngành
-              </th> -->
             </tr>
           </thead>
           <tbody>
@@ -174,7 +155,7 @@
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <h3 class="font-semibold text-base text-blueGray-700">
-            Danh sách khoa
+            {{ "DASHBOARD.MAJORS" | translate }}
           </h3>
         </div>
       </div>
@@ -198,7 +179,7 @@
                   text-left
                 "
               >
-                STT
+                {{ "DASHBOARD.STT" | translate }}
               </th>
               <th
                 class="
@@ -216,7 +197,7 @@
                   text-left
                 "
               >
-                Mã Lớp
+                {{ "DASHBOARD.MAJORS_ID" | translate }}
               </th>
               <th
                 class="
@@ -235,7 +216,7 @@
                   min-w-140-px
                 "
               >
-                Tên Lớp
+                {{ "DASHBOARD.MAJORS_NAME" | translate }}
               </th>
             </tr>
           </thead>
@@ -307,7 +288,7 @@
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <h3 class="font-semibold text-base text-blueGray-700">
-            Danh sách lớp
+            {{ "DASHBOARD.CLASS" | translate }}
           </h3>
         </div>
       </div>
@@ -331,7 +312,7 @@
                   text-left
                 "
               >
-                STT
+                {{ "DASHBOARD.STT" | translate }}
               </th>
               <th
                 class="
@@ -349,7 +330,7 @@
                   text-left
                 "
               >
-                Mã Lớp
+                {{ "DASHBOARD.CLASS_ID" | translate }}
               </th>
               <th
                 class="
@@ -368,7 +349,7 @@
                   min-w-140-px
                 "
               >
-                Tên Lớp
+                {{ "DASHBOARD.CLASS_NAME" | translate }}
               </th>
             </tr>
           </thead>
@@ -443,7 +424,7 @@
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <h3 class="font-semibold text-base text-blueGray-700">
-            Danh sách sinh viên
+            {{ "STUDENT.LIST" | translate }}
           </h3>
         </div>
       </div>
@@ -467,7 +448,7 @@
                   text-left
                 "
               >
-                STT
+                {{ "DASHBOARD.STT" | translate }}
               </th>
               <th
                 class="
@@ -485,26 +466,7 @@
                   text-left
                 "
               >
-                Tên sinh viên
-              </th>
-              <th
-                class="
-                  px-6
-                  bg-blueGray-50
-                  text-blueGray-500
-                  align-middle
-                  border border-solid border-blueGray-100
-                  py-3
-                  text-xs
-                  uppercase
-                  border-l-0 border-r-0
-                  whitespace-nowrap
-                  font-semibold
-                  text-left
-                  min-w-140-px
-                "
-              >
-                Giới tính
+                {{ "STUDENT.STUDENT_NAME" | translate }}
               </th>
               <th
                 class="
@@ -523,7 +485,26 @@
                   min-w-140-px
                 "
               >
-                Năm sinh
+                {{ "STUDENT.GENDER" | translate }}
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                {{ "STUDENT.BIRTH_DAY" | translate }}
               </th>
 
               <th
@@ -543,7 +524,7 @@
                   min-w-140-px
                 "
               >
-                Action
+                {{ "DASHBOARD.ACTION" | translate }}
               </th>
             </tr>
           </thead>
@@ -637,7 +618,7 @@
                   "
                   type="button"
                 >
-                  Chi tiết</button
+                  {{ "DIPLOMAS.VIEW" | translate }}</button
                 >{{ student?.class_name }}
               </td>
             </tr>
@@ -666,7 +647,7 @@
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
           <h3 class="font-semibold text-base text-blueGray-700">
-            Thông tin bằng
+            {{ "DIPLOMAS.INFO" | translate }}
           </h3>
         </div>
       </div>
@@ -690,7 +671,7 @@
                   text-left
                 "
               >
-                STT
+                {{ "DASHBOARD.STT" | translate }}
               </th>
               <th
                 class="
@@ -708,26 +689,7 @@
                   text-left
                 "
               >
-                Mã bằng
-              </th>
-              <th
-                class="
-                  px-6
-                  bg-blueGray-50
-                  text-blueGray-500
-                  align-middle
-                  border border-solid border-blueGray-100
-                  py-3
-                  text-xs
-                  uppercase
-                  border-l-0 border-r-0
-                  whitespace-nowrap
-                  font-semibold
-                  text-left
-                  min-w-140-px
-                "
-              >
-                Xếp loại
+                {{ "DIPLOMAS.DIPLOMAS_ID" | translate }}
               </th>
               <th
                 class="
@@ -746,7 +708,26 @@
                   min-w-140-px
                 "
               >
-                Ngày cấp
+                {{ "DIPLOMAS.RANK" | translate }}
+              </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                {{ "DIPLOMAS.DATE" | translate }}
               </th>
 
               <th
@@ -766,7 +747,7 @@
                   min-w-140-px
                 "
               >
-                Action
+                {{ "DASHBOARD.ACTION" | translate }}
               </th>
             </tr>
           </thead>
@@ -860,7 +841,7 @@
                   "
                   type="button"
                 >
-                  Cấp bằng
+                  {{ "DIPLOMAS.LICENSE" | translate }}
                 </button>
               </td>
             </tr>
