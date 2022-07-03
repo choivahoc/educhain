@@ -31,7 +31,6 @@ export class ViewDiplomasComponent implements OnInit {
   getInfoDiplomas(id: any) {
     this.diplomasService.getPoint(id).subscribe(data => {
       this.infoDiplomas = data.data[0];
-      console.log(this.infoDiplomas);
     })
   }
 
@@ -39,8 +38,6 @@ export class ViewDiplomasComponent implements OnInit {
     this.userService.getCurrentUser().subscribe(data => {
       this.infoStudent = data.data;
       this.infoSchool = this.infoStudent.school[0];
-      console.log(this.infoStudent);
-
     })
   }
 }

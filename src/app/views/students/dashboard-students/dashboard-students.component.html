@@ -18,7 +18,7 @@
           class="font-semibold text-lg"
           [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
         >
-          Kết quả học tập
+          {{ "DASHBOARD.SCORE_BOARD" | translate }}
         </h3>
       </div>
       <button
@@ -44,7 +44,7 @@
         (click)="viewGraduate(idDiplomas)"
       >
         <!-- [disabled]="infoStudent.profile.graduate_active === 'not-graduate'" -->
-        Xem bằng
+        {{ "DIPLOMAS.VIEW" | translate }}
       </button>
     </div>
   </div>
@@ -72,7 +72,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            STT
+            {{ "DASHBOARD.STT" | translate }}
           </th>
           <th
             class="
@@ -93,29 +93,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            Mã môn học
-          </th>
-
-          <th
-            class="
-              px-6
-              align-middle
-              border border-solid
-              py-3
-              text-xs
-              uppercase
-              border-l-0 border-r-0
-              whitespace-nowrap
-              font-semibold
-              text-left
-            "
-            [ngClass]="
-              color === 'light'
-                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                : 'bg-red-800 text-red-300 border-red-700'
-            "
-          >
-            Tên môn học
+            {{ "DASHBOARD.SUBJECT_ID" | translate }}
           </th>
 
           <th
@@ -137,7 +115,29 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            Số tín chỉ
+            {{ "DASHBOARD.SCORE_NAME" | translate }}
+          </th>
+
+          <th
+            class="
+              px-6
+              align-middle
+              border border-solid
+              py-3
+              text-xs
+              uppercase
+              border-l-0 border-r-0
+              whitespace-nowrap
+              font-semibold
+              text-left
+            "
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            {{ "DASHBOARD.CREDIT" | translate }}
           </th>
           <th
             class="
@@ -158,7 +158,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            Điểm
+            {{ "DASHBOARD.POINT" | translate }}
           </th>
         </tr>
       </thead>

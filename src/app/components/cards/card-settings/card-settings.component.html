@@ -3,7 +3,7 @@
 >
   <div class="rounded-t bg-white mb-0 px-6 py-6">
     <div class="text-center flex justify-between">
-      <h6 class="text-blueGray-700 text-xl font-bold">Thông tin người dùng</h6>
+      <h6 class="text-blueGray-700 text-xl font-bold">{{'SETTING.PERSONAL_INFORMATION' | translate}}</h6>
       <!-- <button
         class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
         type="button"
@@ -15,7 +15,7 @@
   <div class="flex-auto px-4 lg:px-10 pt-0">
     <form [formGroup]="settingsForm" (ngSubmit)="formSubmit()">
       <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        Thông tin cơ bản
+        {{'SETTING.BASIC_INFORMATION' | translate}}
       </h6>
       <div class="flex flex-wrap">
         <div class="w-full flex lg:w-12/12 px-4">
@@ -24,7 +24,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Ảnh
+            {{'SETTING.IMAGE' | translate}}
             </label>
             <input
               type="file"
@@ -39,7 +39,7 @@
               class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button"
             >
-              Chọn ảnh...
+            {{'SETTING.CHOOSE_IMAGE' | translate}}
             </button>
           </div>
           <div class="flex w-full flex-wrap justify-center">
@@ -66,7 +66,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Họ và tên
+            {{'SETTING.NAME' | translate}}
             </label>
             <input
               type="text"
@@ -81,7 +81,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Giới tính
+            {{'SETTING.GENDER' | translate}}
             </label>
             <div class="flex justify-start">
               <div class="form-check form-check-inline pr-4">
@@ -96,7 +96,7 @@
                 <label
                   class="form-check-label inline-block text-gray-800"
                   for="inlineRadio10"
-                  >Nam</label
+                  >{{'SETTING.MALE' | translate}}</label
                 >
               </div>
               <div class="form-check form-check-inline">
@@ -111,7 +111,7 @@
                 <label
                   class="form-check-label inline-block text-gray-800"
                   for="inlineRadio20"
-                  >Nữ</label
+                  >{{'SETTING.FEMALE' | translate}}</label
                 >
               </div>
             </div>
@@ -129,7 +129,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Ngày sinh
+            {{'SETTING.DATE_OF_BIRTH' | translate}}
             </label>
             <input
               type="text"
@@ -144,7 +144,7 @@
       <hr class="mt-6 border-b-1 border-blueGray-300" />
 
       <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        Thông tin liên lạc
+        {{'SETTING.CONTACT_INFORMATION' | translate}}
       </h6>
       <div class="w-full lg:w-12/12 px-4">
         <div class="relative w-full mb-3">
@@ -168,7 +168,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Địa chỉ
+            {{'SETTING.ADDRESS' | translate}}
             </label>
             <input
               type="text"
@@ -183,7 +183,7 @@
               class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Số điện thọai
+            {{'SETTING.PHONE' | translate}}
             </label>
             <input
               type="text"
@@ -196,7 +196,7 @@
       <hr class="mt-6 border-b-1 border-blueGray-300" />
 
       <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-        CMND/CCCD
+        {{'SETTING.ID' | translate}}
       </h6>
       <div formGroupName="identityCard">
         <div class="flex flex-wrap">
@@ -206,7 +206,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Số
+              {{'SETTING.NO' | translate}}
               </label>
               <input
                 type="text"
@@ -221,7 +221,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Ngày cấp
+              {{'SETTING.DATE_OF_ISSUE' | translate}}
               </label>
               <input
                 type="email"
@@ -236,7 +236,7 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Ngày hết hạn
+              {{'SETTING.DATE_OF_EXPRITY' | translate}}
               </label>
               <input
                 type="text"
@@ -253,7 +253,7 @@
           class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
           type="submit"
         >
-          Cập nhật
+        {{'SETTING.UPDATE' | translate}}
         </button>
       </div>
     </form>

@@ -9,8 +9,8 @@ export class AppComponent {
   title = 'angular-dashboard-page';
   constructor(public translate: TranslateService) {
     translate.addLangs(['vi', 'en']);
-    translate.setDefaultLang('vi');
+    translate.setDefaultLang('en');
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/vi|en/) ? 'vi' : browserLang);
+    translate.use(browserLang.match(/vi|en/) ? 'en' : browserLang);
   }
 }
