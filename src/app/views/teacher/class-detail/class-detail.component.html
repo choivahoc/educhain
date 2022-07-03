@@ -66,7 +66,7 @@
 
         <div class="">
           <h3 class="">
-            <b>  Full Name: {{studentDetail?.full_name}}</b>
+            <b> Full Name: {{studentDetail?.full_name}}</b>
           </h3>
           <table class="items-center w-full bg-transparent border-collapse">
             <thead class="thead-light">
@@ -92,7 +92,7 @@
             </thead>
             <tbody>
 
-              <tr *ngFor="let diploma of listdiplomas">
+              <tr *ngFor="let diploma of listdiplomasByUserID">
                 <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                   {{diploma?.diplomas_id}}
                 </th>
@@ -115,52 +115,32 @@
           </table>
 
           <table class="items-center w-full bg-transparent border-collapse">
-            <thead class="thead-light">
-              <tr>
-              Transcript
-              </tr>
-              <tr>
-                <th
-                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Transcript Academic ID
-                </th>
-                <th
-                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Point
-                </th>
-                <th
-                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
-                  Awarded Date</th>
 
-              </tr>
-            </thead>
-            <tbody>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              <form [formGroup]="form">
+                <h2>points</h2>
+                <div formArrayName="points" *ngFor="let elment of form.controls.points?.value ; let i = index">
+                  <ng-container [formGroupName]="i">
+                    <tr>
+                      <td>{{studentDetail?.student_diplomas.transcript[i].transcript_academic.transcript_academic_id}}
+                      </td>
+                      <td> <input type="text" formControlName="point"></td>
 
-              <tr *ngFor="let transcript of studentDetail?.student_diplomas.transcript">
-                <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  {{transcript.transcript_academic.transcript_academic_id}}
-                </th>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <input type="text"
-                    [value]="transcript.point">
-                </td>
-
-
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <button *ngIf="!transcript?.point"
-                    class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button">
-                    Add
-                  </button>
-
-                  <button *ngIf="transcript?.point"
-                  class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                  type="button">
-                  Edit
-                </button>
-                </td>
-              </tr>
-            </tbody>
+                    </tr>
+                  </ng-container>
+                </div>
+                <button (click)="updatePoints()" style="float:right"  *ngIf="form.controls.points?.value.length>0"
+                class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button">
+               Submit
+              </button>
+              <button (click)="updatePoints()" style="float:right"  *ngIf="form.controls.points?.value.length==0"
+                class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button">
+               Add 
+              </button>
+              </form>
+            </td>
           </table>
         </div>
       </div>

@@ -37,5 +37,11 @@ export class TeacherService extends BaseApi {
         return this.httpClient.get<any>(`${this.hostUrl}/diplomas`);
     
       }
+
+      updatePoints(userId:string,data:any): Observable<any> {
+
+        return this.httpClient.put<any>(`${this.hostUrl}/diplomas/${userId}`,data);
+    
+      }
   
 }
