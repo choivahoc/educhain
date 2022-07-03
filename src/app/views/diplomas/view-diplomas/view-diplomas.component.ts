@@ -20,7 +20,7 @@ export class ViewDiplomasComponent implements OnInit {
     private router: Router,
     private diplomasService: DiplomasService,
     private userService: UserService,
-    public translate: TranslateService
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {

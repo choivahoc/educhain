@@ -34,7 +34,6 @@ export class DashboardStudentsComponent implements OnInit {
       this.viewPoint(this.idDiplomas);
     }
     )
-
   }
   viewGraduate(idDiplomas) {
     this.router.navigate(['diplomas']
