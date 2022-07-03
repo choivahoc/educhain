@@ -54,7 +54,7 @@
     "VIEW": "View diplomas",
     "INFO":"Information of diplomas",
     "DIPLOMAS_ID": "Diplomas code",
-    "RANK":"Graduation rank",
+    "RANK":"Degree classification",
     "GPA": "GPA",
     "DATE": "Date of issue",
     "LICENSE":"License"

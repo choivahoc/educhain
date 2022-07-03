@@ -23,6 +23,43 @@
     "UPDATE_SUCCESS": "Cập nhật thành công"
   },
 
+  "DASHBOARD": {
+    "SCORE_BOARD": "Thông tin bảng điểm",
+    "STT": "STT",
+    "SUBJECT_ID": "Mã môn học",
+    "SCORE_NAME": "Tên môn học",
+    "CREDIT": "Số tín chỉ",
+    "POINT": "Điểm",
+    "DEPARTMENT": "Danh sách khoa",
+    "DEPARTMENT_ID": "Mã khoa",
+    "DEPARTMENT_NAME": "Tên khoa",
+    "MAJORS": "Danh sách ngành học",
+    "MAJORS_ID": "Mã ngành",
+    "MAJORS_NAME": "Tên ngành",
+    "CLASS": "Danh sách lớp",
+    "CLASS_ID": "Mã lớp",
+    "CLASS_NAME": "Tên lớp",
+    "ACTION": "Hành động"
+  },
+
+  "STUDENT":{
+    "LIST": "Danh sách sinh viên",
+    "STUDENT_ID": "Mã sinh viên",
+    "STUDENT_NAME": "Tên sinh viên",
+    "BIRTH_DAY":"Năm sinh",
+    "GENDER": "Giới tính",
+    "MODE": "Hình thức đào tạo"
+  },
+  "DIPLOMAS":{
+    "VIEW": "Xem bằng",
+    "INFO":"Thông tin bằng",
+    "DIPLOMAS_ID": "Mã bằng",
+    "RANK":"Xếp loại tốt nghiệp",
+    "GPA": "GPA",
+    "DATE": "Ngày cấp",
+    "LICENSE":"Cấp bằng"
+  },
+
   "SETTING" : {
     "PERSONAL_INFORMATION" : "Thông tin người dùng",
     "BASIC_INFORMATION" : "Thông tin cơ bản",
