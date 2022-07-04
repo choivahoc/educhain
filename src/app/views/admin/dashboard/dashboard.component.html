@@ -7,7 +7,7 @@
   </div>
 </div>
 <div class="flex flex-wrap mt-4">
-  <div class="w-full xl:w-4/12 mb-12 xl:mb-0 px-4">
+  <div class="w-full xl:w-6/12 mb-12 xl:mb-0 px-4">
     <div
       class="
         relative
@@ -28,7 +28,7 @@
           </h3>
         </div>
       </div>
-      <div class="block w-full overflow-x-auto">
+      <div class="block w-full h-285-px overflow-x-auto">
         <table class="items-center w-full bg-transparent border-collapse">
           <thead class="thead-light">
             <tr>
@@ -87,6 +87,25 @@
               >
                 {{ "DASHBOARD.DEPARTMENT_NAME" | translate }}
               </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                {{ "DASHBOARD.ACTION" | translate }}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -132,13 +151,41 @@
               >
                 {{ item?.department_name }}
               </td>
+              <td>
+                <button
+                  (click)="getMajor(item?.department_id)"
+                  class="
+                    bg-indigo-500
+                    text-white
+                    active:bg-indigo-600
+                    font-bold
+                    uppercase
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    shadow
+                    hover:shadow-md
+                    outline-none
+                    focus:outline-none
+                    mr-1
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                >
+                  {{ "DASHBOARD.VIEW_MAJOR" | translate }}
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <div class="w-full xl:w-4/12 px-4">
+  <div class="w-full xl:w-6/12 px-4">
     <div
       class="
         relative
@@ -159,7 +206,7 @@
           </h3>
         </div>
       </div>
-      <div class="block w-full overflow-x-auto">
+      <div class="block w-full h-285-px overflow-x-auto">
         <table class="items-center w-full bg-transparent border-collapse">
           <thead class="thead-light">
             <tr>
@@ -218,6 +265,25 @@
               >
                 {{ "DASHBOARD.MAJORS_NAME" | translate }}
               </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                {{ "DASHBOARD.ACTION" | translate }}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -265,13 +331,41 @@
               >
                 {{ item?.major_name }}
               </td>
+              <td>
+                <button
+                  (click)="getClass(item?._class)"
+                  class="
+                    bg-indigo-500
+                    text-white
+                    active:bg-indigo-600
+                    font-bold
+                    uppercase
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    shadow
+                    hover:shadow-md
+                    outline-none
+                    focus:outline-none
+                    mr-1
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                >
+                  {{ "DASHBOARD.VIEW_CLASS" | translate }}
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <div class="w-full xl:w-4/12 px-4">
+  <div class="w-full xl:w-6/12 px-4">
     <div
       class="
         relative
@@ -292,7 +386,7 @@
           </h3>
         </div>
       </div>
-      <div class="block w-full overflow-x-auto">
+      <div class="block w-full h-285-px overflow-x-auto">
         <table class="items-center w-full bg-transparent border-collapse">
           <thead class="thead-light">
             <tr>
@@ -351,6 +445,25 @@
               >
                 {{ "DASHBOARD.CLASS_NAME" | translate }}
               </th>
+              <th
+                class="
+                  px-6
+                  bg-blueGray-50
+                  text-blueGray-500
+                  align-middle
+                  border border-solid border-blueGray-100
+                  py-3
+                  text-xs
+                  uppercase
+                  border-l-0 border-r-0
+                  whitespace-nowrap
+                  font-semibold
+                  text-left
+                  min-w-140-px
+                "
+              >
+                {{ "DASHBOARD.ACTION" | translate }}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -398,6 +511,34 @@
               >
                 {{ class?.class_name }}
               </td>
+              <td>
+                <button
+                  (click)="getStudent(class?.class_name)"
+                  class="
+                    bg-indigo-500
+                    text-white
+                    active:bg-indigo-600
+                    font-bold
+                    uppercase
+                    text-xs
+                    px-4
+                    py-2
+                    rounded
+                    shadow
+                    hover:shadow-md
+                    outline-none
+                    focus:outline-none
+                    mr-1
+                    mb-1
+                    ease-linear
+                    transition-all
+                    duration-150
+                  "
+                  type="button"
+                >
+                  {{ "DASHBOARD.VIEW_STUDENT" | translate }}
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -407,7 +548,7 @@
 
   <!-- Student -->
 
-  <div class="w-full xl:w-12/12 px-4">
+  <div class="w-full xl:w-6/12 px-4">
     <div
       class="
         relative
@@ -428,7 +569,7 @@
           </h3>
         </div>
       </div>
-      <div class="block w-full overflow-x-auto">
+      <div class="block w-full h-285-px overflow-x-auto">
         <table class="items-center w-full bg-transparent border-collapse">
           <thead class="thead-light">
             <tr>
@@ -651,7 +792,7 @@
           </h3>
         </div>
       </div>
-      <div class="block w-full overflow-x-auto">
+      <div class="block w-full h-285-px overflow-x-auto">
         <table class="items-center w-full bg-transparent border-collapse">
           <thead class="thead-light">
             <tr>

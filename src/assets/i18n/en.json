@@ -39,7 +39,10 @@
     "CLASS": "List class",
     "CLASS_ID": "Class code",
     "CLASS_NAME": "Class name",
-    "ACTION": "Action"
+    "ACTION": "Action",
+    "VIEW_MAJOR":"View major",
+    "VIEW_CLASS":"View class",
+    "VIEW_STUDENT":"View student"
   },
 
   "STUDENT":{

@@ -39,7 +39,10 @@
     "CLASS": "Danh sách lớp",
     "CLASS_ID": "Mã lớp",
     "CLASS_NAME": "Tên lớp",
-    "ACTION": "Hành động"
+    "ACTION": "Hành động",
+    "VIEW_MAJOR":"Danh sách ngành",
+    "VIEW_CLASS":"Danh sách lớp",
+    "VIEW_STUDENT":"Danh sách sinh viên"
   },
 
   "STUDENT":{

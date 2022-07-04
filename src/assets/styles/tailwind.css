@@ -2090,6 +2090,10 @@ select {
   height: 600px;
 }
 
+.h-285-px {
+  height: 285px;
+}
+
 .text-55 {
   font-size: 55rem;
 }
