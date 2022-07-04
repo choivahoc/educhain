@@ -12,19 +12,20 @@ export class ClassDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private teacherService: TeacherService) { }
+    private teacherService: TeacherService
+  ) { }
 
   listDepartment: any[];
   className = '';
   listStudents: any[];
   displayStudentDetail = false;
   studentDetail: any;
-  listdiplomas: any[];
+  listDiplomas: any[];
 
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
-      this.className = params['className'];
+      this.className = params?.className;
       this.teacherService.getStudentsByClass(this.className).subscribe(data => {
         this.listStudents = data.data;
       })
@@ -37,11 +38,15 @@ export class ClassDetailComponent implements OnInit {
 
   detailStudent(userId: string) {
     this.displayStudentDetail = true;
-    this.teacherService.getStudentDetail(this.className, userId).subscribe(data => {
+    const params = {
+      className: this.className,
+      userId
+    };
+    this.teacherService.getStudentDetail(params).subscribe(data => {
       this.studentDetail = data.data[0];
     });
     this.teacherService.getdiplomas().subscribe(diplomas => {
-      this.listdiplomas = diplomas.data.filter(diploma => diploma.user_id == userId)
+      this.listDiplomas = diplomas.data.filter(diploma => diploma.user_id === userId)
     });
   }
 }

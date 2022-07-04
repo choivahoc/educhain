@@ -5,13 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin.component.html',
 })
 export class AdminComponent implements OnInit {
-  showNavbar = true;
+  showNavbar = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   public setShowNavbar(): void {
-    this.showNavbar = !this.showNavbar;
+    // Todo Something
   }
 }

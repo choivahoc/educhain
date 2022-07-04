@@ -17,12 +17,12 @@ export class DashboardTeachersComponent implements OnInit {
       private teacherService: TeacherService
   ) { }
 
-  inforUser: any;
+  infoUser: any;
   listDepartment: any[];
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(data => {
-      this.inforUser = data.data;
+      this.infoUser = data.data;
     })
 
     this.teacherService.getDepartment().subscribe(data => {

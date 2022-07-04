@@ -1,17 +1,17 @@
 <div>
-      <ng-container *ngIf="showNavbar">
-            <app-sidebar></app-sidebar>
-          </ng-container> 
-          <div class="relative bg-blueGray-100"
-          [ngClass]="showNavbar ? 'md:ml-64' : null">
-            <app-admin-navbar
-                    (setShowNavbar)="setShowNavbar()"></app-admin-navbar>
-            <app-header-stats ></app-header-stats>
-            <div class="px-4 md:px-10 mx-auto w-full -m-24">
-              <router-outlet></router-outlet>
-              <app-footer-admin></app-footer-admin>
-            </div>
-          </div>
-     
+<!--    <ng-container *ngIf="showNavbar">-->
+<!--        <app-sidebar></app-sidebar>-->
+<!--    </ng-container>-->
+    <div class="relative bg-blueGray-100"
+         [ngClass]="showNavbar ? 'md:ml-64' : null">
+        <app-admin-navbar
+                (setShowNavbar)="setShowNavbar()"></app-admin-navbar>
+        <app-header-stats></app-header-stats>
+        <div class="px-4 md:px-10 mx-auto w-full -m-24">
+            <router-outlet></router-outlet>
+            <app-footer-admin></app-footer-admin>
+        </div>
+    </div>
 
-  </div>
+
+</div>

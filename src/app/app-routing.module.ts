@@ -19,9 +19,6 @@ import { LoginComponent } from './views/auth/login/login.component';
 import { RegisterComponent } from './views/auth/register/register.component';
 import { ClassDetailComponent } from './views/teacher/class-detail/class-detail.component';
 import { DashboardTeachersComponent } from './views/teacher/dashboard-teachers/dashboard-teachers.component';
-import { IndexComponent } from './views/index/index.component';
-import { LandingComponent } from './views/landing/landing.component';
-import { ProfileComponent } from './views/profile/profile.component';
 import { DashboardStudentsComponent } from './views/students/dashboard-students/dashboard-students.component';
 import { SettingGuard } from './services/setting.guard';
 import { DiplomasComponent } from './views/diplomas/diplomas.component';
@@ -46,6 +43,7 @@ const routes: Routes = [
     component: StudentsComponent,
     children: [
       { path: 'dashboard', component: DashboardStudentsComponent },
+      { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },
   // teaher views
@@ -55,6 +53,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardTeachersComponent },
       { path: 'class', component: ClassDetailComponent },
+      { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
     ],
   },
   // auth views
@@ -64,11 +63,11 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '**', redirectTo: 'login', pathMatch: 'full' },
     ],
     canActivate: [NoAuthGuard]
   },
-  //diplomas
+  // diplomas
   {
     path: 'diplomas',
     component: DiplomasComponent,

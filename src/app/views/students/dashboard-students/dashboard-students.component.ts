@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { StudentsService } from 'src/app/services/students.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,13 +15,17 @@ export class DashboardStudentsComponent implements OnInit {
     return this._color;
   }
   set color(color: string) {
-    this._color = color !== "light" && color !== "dark" ? "light" : color;
+    this._color = color !== 'light' && color !== 'dark' ? 'light' : color;
   }
-  private _color = "light";
+  private _color = 'light';
 
-  constructor(private userService: UserService, private studentsService: StudentsService, private router: Router, private translate: TranslateService) { }
+  constructor(
+      private userService: UserService,
+      private studentsService: StudentsService,
+      private router: Router,
+  ) { }
 
-  type = "student";
+  type = 'student';
   dataPoint: any;
   infoStudent: any;
   idDiplomas: any;
