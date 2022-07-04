@@ -60,7 +60,13 @@
     "RANK":"Xếp loại tốt nghiệp",
     "GPA": "GPA",
     "DATE": "Ngày cấp",
-    "LICENSE":"Cấp bằng"
+    "LICENSE":"Cấp bằng",
+    "MODE": "Hình thức đào tạo",
+    "CONFERRED":"cấp",
+    "UPON":"Ông/ Bà",
+    "DEGREE_OF":"Bằng",
+    "ID_GRADUATE_CERTIFICATION": "Số hiệu cấp bằng",
+    "YEAR_OF_GRADUATION":"Năm tốt nghiệp"
   },
 
   "SETTING" : {

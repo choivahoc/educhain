@@ -60,7 +60,13 @@
     "RANK":"Degree classification",
     "GPA": "GPA",
     "DATE": "Date of issue",
-    "LICENSE":"License"
+    "LICENSE":"License",
+    "MODE": "Mode of study",
+    "CONFERRED":"has conferred",
+    "UPON":"Upon",
+    "DEGREE_OF":"The degree of",
+    "ID_GRADUATE_CERTIFICATION": "Graduate Certification Code",
+    "YEAR_OF_GRADUATION":"Year of graduation"
   },
   
   "SETTING" : {
