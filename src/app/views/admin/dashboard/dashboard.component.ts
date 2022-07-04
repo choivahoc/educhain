@@ -1,18 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
-import { AdminService } from "src/app/services/admin.service";
-import { TeacherService } from "src/app/services/teacher.service";
-import { UserService } from "src/app/services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
+import { TeacherService } from 'src/app/services/teacher.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
 
-  constructor(private userService: UserService, private adminService: AdminService, private teacherService: TeacherService, private translate: TranslateService) { }
+  constructor(
+      private userService: UserService,
+      private adminService: AdminService,
+      private teacherService: TeacherService,
+  ) { }
 
   infoAdmin: any;
   listDepartment: any;
@@ -62,6 +65,6 @@ export class DashboardComponent implements OnInit {
     })
   }
   actionDiplomas() {
-    alert("Pending...")
+    // ToDo something
   }
 }

@@ -67,3 +67,15 @@ export interface UsersResponse {
   count : number,
   data: IUser[]
 }
+
+export interface ILogin {
+  username: string,
+  password: string,
+  role: string
+}
+
+export const ModelRolesKey = {
+  Student: 'student',
+  Admin: 'admin',
+  Teacher: 'teacher'
+}

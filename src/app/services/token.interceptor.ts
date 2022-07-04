@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
@@ -13,9 +13,9 @@ export class TokenInterceptor implements HttpInterceptor {
         "Accept": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*, educhain.choivahoc.vn",
     };
-    
+
     const token = this.userService.currentTokenValue();
-    
+
     if (token) {
       headersConfig['Authorization'] = `Bearer ${token}`;
     }

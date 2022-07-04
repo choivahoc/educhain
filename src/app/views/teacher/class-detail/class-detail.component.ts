@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,18 +15,18 @@ export class ClassDetailComponent implements OnInit {
     private teacherService: TeacherService) { }
 
   listDepartment: any[];
-  className: string = '';
+  className = '';
   listStudents: any[];
-  displayStudentDetail: boolean = false;
+  displayStudentDetail = false;
   studentDetail: any;
   listdiplomas: any[];
+
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {
       this.className = params['className'];
       this.teacherService.getStudentsByClass(this.className).subscribe(data => {
-        this.listStudents = data.data
-        console.log(this.listStudents);
+        this.listStudents = data.data;
       })
     });
 
@@ -38,11 +38,9 @@ export class ClassDetailComponent implements OnInit {
   detailStudent(userId: string) {
     this.displayStudentDetail = true;
     this.teacherService.getStudentDetail(this.className, userId).subscribe(data => {
-      this.studentDetail = data.data[0]
-      console.log(data.data[0]);
+      this.studentDetail = data.data[0];
     });
     this.teacherService.getdiplomas().subscribe(diplomas => {
-      console.log(diplomas);
       this.listdiplomas = diplomas.data.filter(diploma => diploma.user_id == userId)
     });
   }

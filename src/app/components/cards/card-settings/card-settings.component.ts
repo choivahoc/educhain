@@ -1,21 +1,24 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { IUser, IUserUpdate } from "src/app/models/user.model";
-import { UserService } from "src/app/services/user.service";
-import Swal from "sweetalert2";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IUser } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: "app-card-settings",
-  templateUrl: "./card-settings.component.html",
+  selector: 'app-card-settings',
+  templateUrl: './card-settings.component.html',
 })
 export class CardSettingsComponent implements OnInit {
   settingsForm!: FormGroup;
-  isSubmit: boolean = false;
+  isSubmit = false;
   selectedImage: File = null;
   currentUser: IUser;
   url: any;
-  msg = "";
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  msg = '';
+  constructor(
+      private fb: FormBuilder,
+      private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((res) => {
@@ -38,24 +41,23 @@ export class CardSettingsComponent implements OnInit {
     });
 
     this.settingsForm = this.fb.group({
-      imageUrl: this.fb.control("", [Validators.required]),
-      fullName: this.fb.control("", [Validators.required]),
-      gender: this.fb.control("", [Validators.required]),
-      email: this.fb.control("", [Validators.required, Validators.email]),
-      address: this.fb.control("", [Validators.required]),
-      dateOfBirth: this.fb.control("", [Validators.required]),
-      city: this.fb.control("", [Validators.required]),
-      phone: this.fb.control("", [Validators.required]),
+      imageUrl: this.fb.control('', [Validators.required]),
+      fullName: this.fb.control('', [Validators.required]),
+      gender: this.fb.control('', [Validators.required]),
+      email: this.fb.control('', [Validators.required, Validators.email]),
+      address: this.fb.control('', [Validators.required]),
+      dateOfBirth: this.fb.control('', [Validators.required]),
+      city: this.fb.control('', [Validators.required]),
+      phone: this.fb.control('', [Validators.required]),
       identityCard: this.fb.group({
-        no: this.fb.control("", [Validators.required]),
-        dateOfIssue: this.fb.control("", [Validators.required]),
-        dateOfExprity: this.fb.control("", [Validators.required]),
+        no: this.fb.control('', [Validators.required]),
+        dateOfIssue: this.fb.control('', [Validators.required]),
+        dateOfExprity: this.fb.control('', [Validators.required]),
       }),
     });
   }
 
   formSubmit() {
-    console.log(this.settingsForm.value);
     this.currentUser.email = this.settingsForm.value.email;
     this.currentUser.full_name = this.settingsForm.value.fullName;
     this.currentUser.profile.address = this.settingsForm.value.address;
@@ -66,7 +68,7 @@ export class CardSettingsComponent implements OnInit {
     this.currentUser.citizen_identity_card.date_of_exprity = this.settingsForm.value.identityCard.dateOfExprity;
     this.currentUser.citizen_identity_card.date_of_issue = this.settingsForm.value.identityCard.dateOfIssue;
     this.currentUser.citizen_identity_card.no = this.settingsForm.value.identityCard.no;
-    
+
     this.isSubmit = true;
     // const userUpdate = {
     //   // avatar: "string",
@@ -88,54 +90,54 @@ export class CardSettingsComponent implements OnInit {
     this.userService.updateUser(this.currentUser, this.currentUser.user_id).subscribe((data) => {
       const Toast = Swal.mixin({
         toast: true,
-        position: "bottom-end",
+        position: 'bottom-end',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
         },
       });
 
       Toast.fire({
-        icon: "success",
-        title: "Update in successfully",
+        icon: 'success',
+        title: 'Update in successfully',
       });
       // this.router.navigate(["profile", data.user.username]);
     });
   }
 
   onImageSelected(event) {
-    this.url = "";
+    this.url = '';
     if (!event.target.files[0] || event.target.files[0].length == 0) {
-      this.msg = "You must select an image";
+      this.msg = 'You must select an image';
       return;
     }
 
-    let mimeType = event.target.files[0].type;
+    const mimeType = event.target.files[0].type;
 
     if (mimeType.match(/image\/*/) == null) {
-      this.msg = "Only images are supported";
+      this.msg = 'Only images are supported';
       return;
     }
 
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
 
     reader.onload = (_event) => {
-      this.msg = "";
+      this.msg = '';
       this.url = reader.result;
     };
   }
 
   updateUser() {
     Swal.fire({
-      icon: "question",
-      title: "Are you sure you want to update?",
+      icon: 'question',
+      title: 'Are you sure you want to update?',
       showCancelButton: true,
-      confirmButtonText: "Yes",
-      confirmButtonColor: "#fa6342",
+      confirmButtonText: 'Yes',
+      confirmButtonColor: '#fa6342',
     }).then((result) => {
       if (result.isConfirmed) {
         this.formSubmit();
