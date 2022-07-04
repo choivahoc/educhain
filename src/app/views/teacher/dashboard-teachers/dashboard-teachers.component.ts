@@ -23,11 +23,6 @@ export class DashboardTeachersComponent implements OnInit {
     this.teacherService.getDepartment().subscribe(data => {
       this.listDepartment = data.data;
     })
-
-    this.teacherService.getdiplomas().subscribe(data => {
-    console.log(data);
-    
-    })
   }
   classDetail(className: string) {
     this.router.navigate(['teacher/class'], {

@@ -3,8 +3,8 @@
     <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 
       <div class="block w-full overflow-x-auto">
-        <h4 class="">
-          {{className}} Class
+        <h4 style="padding: 15px">
+         <b> {{className}} Class</b>
         </h4>
         <table class="items-center w-full bg-transparent border-collapse">
           <thead class="thead-light">
@@ -64,15 +64,16 @@
     <div class="w-full mb-12 xl:mb-0 px-4">
       <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 
-        <div class="">
-          <h3 class="">
+        <div >
+          <h3 style="padding: 15px; text-decoration-line:underline">
             <b> Full Name: {{studentDetail?.full_name}}</b>
           </h3>
+          <h5 style="padding: 15px;">
+            <b> Diplomas infomation</b>
+          </h5>
           <table class="items-center w-full bg-transparent border-collapse">
             <thead class="thead-light">
-              <tr>
-                Diplomas
-              </tr>
+             
               <tr>
                 <th
                   class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
@@ -114,15 +115,18 @@
             </tbody>
           </table>
 
+          <h5 style="padding: 15px;">
+            <b> Point</b>
+          </h5>
           <table class="items-center w-full bg-transparent border-collapse">
 
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
               <form [formGroup]="form">
-                <h2>points</h2>
+                
                 <div formArrayName="points" *ngFor="let elment of form.controls.points?.value ; let i = index">
                   <ng-container [formGroupName]="i">
                     <tr>
-                      <td>{{studentDetail?.student_diplomas.transcript[i].transcript_academic.transcript_academic_id}}
+                      <td>{{studentDetail?.student_diplomas.transcript[i].transcript_academic.transcript_academic_name}}
                       </td>
                       <td> <input type="text" formControlName="point"></td>
 

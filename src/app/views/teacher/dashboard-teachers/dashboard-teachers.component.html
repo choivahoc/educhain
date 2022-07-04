@@ -1,23 +1,30 @@
 
+<div class="flex flex-wrap">
+  <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+    <app-card-line-chart></app-card-line-chart>
+  </div>
+  <div class="w-full xl:w-4/12 px-4">
+    <app-card-bar-chart></app-card-bar-chart>
+  </div>
+</div>
+<div class="rounded-t mb-0 px-4 py-3 border-0">
+  <div class="flex flex-wrap items-center">
+      <h1 class="font-semibold text-base " style="font-size: 2rem;">
+        List Departments
+      </h1>
+  </div>
+</div>
 <div class="flex flex-wrap mt-4">
   <div class="w-full mb-12 xl:mb-0 px-4">
     <div
     class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+    *ngFor="let department of listDepartment" style="margin-top: 50px;"
   >
-    <div class="rounded-t mb-0 px-4 py-3 border-0">
-      <div class="flex flex-wrap items-center">
-          <h3 class="font-semibold text-base text-blueGray-700">
-            List Departments
-          </h3>
-      </div>
-    </div>
-    <div class="block w-full overflow-x-auto" *ngFor="let department of listDepartment">
-      <h4 class="">
-        {{department.department_name}} Department
-     </h4>
+   
+    <div class="block w-full overflow-x-auto" >
       <table class="items-center w-full bg-transparent border-collapse">
         <thead class="thead-light">
-          <tr>
+          <tr>   
             <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
             >
@@ -29,22 +36,32 @@
             Class Name
             </th>
             <th
+            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          >
+     Department Name
+          </th>
+            <th
               class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"
             > Action</th>
           </tr>
         </thead>
         <tbody  *ngFor="let major of department.major">
           <tr   *ngFor="let class of major._class">
-            <th
+            <td
               class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
             >
             {{major.major_name}}
-            </th>
+          </td>
             <td
               class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
             >
             {{class?.class_name}}
             </td>
+            <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          >
+          {{department.department_name}} Department
+          </td>
             <td
               class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
             >
@@ -59,5 +76,4 @@
   </div>
 </div>
 </div>
-
 

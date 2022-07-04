@@ -37,7 +37,6 @@ export class ClassDetailComponent implements OnInit {
 
     this.teacherService.getdiplomas().subscribe(diplomas => {
       this.diplomas = diplomas
-      
     });
   }
 
@@ -53,8 +52,6 @@ export class ClassDetailComponent implements OnInit {
     this.diplomas.data.forEach(element => {
       if (element.user_id == userId) {
         let points = this.form.controls.points as FormArray;
-        console.log(element);
-
         element.transcript.forEach(item => {
           if (item.point) {
             points.push(this.fb.group({
@@ -78,19 +75,19 @@ export class ClassDetailComponent implements OnInit {
   }
 
   updatePoints() {
-
+    let transcript;
     this.diplomas.data.forEach((element, index) => {
       if (element.user_id == this.studentDetail.user_id) {
         element.transcript.forEach((item, index) => {
-          item.point = this.form.controls.points.value[index]
+          item.point = this.form.controls.points.value[index].point
+          
         })
+        transcript =  element.transcript      
       }
     });
 
 
-    this.teacherService.updatePoints(this.studentDetail.user_id, this.diplomas).subscribe(data => {
-      console.log(data);
-      
+    this.teacherService.updatePoints(this.studentDetail.user_id, transcript).subscribe(data => {  
     })
 
   }
