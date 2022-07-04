@@ -65,6 +65,6 @@ export class DashboardComponent implements OnInit {
     })
   }
   actionDiplomas() {
-    // ToDo something
+    alert('Pending...')
   }
 }

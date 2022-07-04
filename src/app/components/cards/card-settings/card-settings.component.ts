@@ -15,10 +15,7 @@ export class CardSettingsComponent implements OnInit {
   currentUser: IUser;
   url: any;
   msg = '';
-  constructor(
-      private fb: FormBuilder,
-      private userService: UserService
-  ) {}
+  constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((res) => {
@@ -58,6 +55,7 @@ export class CardSettingsComponent implements OnInit {
   }
 
   formSubmit() {
+    console.log(this.settingsForm.value);
     this.currentUser.email = this.settingsForm.value.email;
     this.currentUser.full_name = this.settingsForm.value.fullName;
     this.currentUser.profile.address = this.settingsForm.value.address;
@@ -110,7 +108,7 @@ export class CardSettingsComponent implements OnInit {
 
   onImageSelected(event) {
     this.url = '';
-    if (!event.target.files[0] || event.target.files[0].length == 0) {
+    if (!event.target.files[0] || event.target.files[0].length === 0) {
       this.msg = 'You must select an image';
       return;
     }

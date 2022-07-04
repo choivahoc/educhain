@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsComponent implements OnInit {
 
-  showNavbar = true;
+  showNavbar = false;
 
   constructor() { }
 
   ngOnInit(): void { }
 
   public setShowNavbar(): void {
-    this.showNavbar = !this.showNavbar;
+    // Todo Something
   }
 }

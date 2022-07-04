@@ -1,55 +1,110 @@
 <body>
-  <div class="form h-full relative">
-    <div class="box justify-center flex-col flex absolute z-2">
-      <h4 class="font-bold mb-24 uppercase text-center">
-        {{ infoSchool?.school_name }}
-      </h4>
-      <h5 class="font-semibold text-center">
-        {{ "DIPLOMAS.CONFERRED" | translate }}
-      </h5>
-      <h3 class="font-bold mb-4 text-center uppercase">
-        {{ "DIPLOMAS.DEGREE_OF" | translate }}
-      </h3>
-      <h4 class="font-bold mb-24 uppercase text-center">
-        {{ infoSchool?.department?.department_name }}
-      </h4>
-      <span class="mb-4 ml-5"
-        >{{ "DIPLOMAS.UPON" | translate }}: {{ infoStudent?.full_name }}</span
-      >
-      <span class="mb-4 ml-5"
-        >{{ "STUDENT.BIRTH_DAY" | translate }}:
-        {{ infoStudent?.profile?.date_of_birth }}</span
-      >
-      <span class="mb-4 ml-5"
-        >{{ "DIPLOMAS.YEAR_OF_GRADUATION" | translate }}:
-        {{ infoDiplomas?.awarded_date }}</span
-      >
-      <span class="mb-4 ml-5"
-        >{{ "DIPLOMAS.RANK" | translate }}:
-        {{ infoDiplomas?.academic_ability }}</span
-      >
-      <span class="mb-24 ml-5">{{ "DIPLOMAS.MODE" | translate }}: </span>
-      <div class="flex">
-        <div>
-          <span class="mb-4 ml-5"
-            >{{ "DIPLOMAS.ID_GRADUATE_CERTIFICATION" | translate }}:
-            {{ infoDiplomas?.id_graduate_certification }}</span
-          >
-        </div>
-        <div class="grid">
-          <span class="mb-4 ml-5 text-center"
-            >{{ infoDiplomas?.awarded_place }} ,
-            {{ infoDiplomas?.graduate_certification_date }}</span
-          >
-          <span class="mb-4 ml-5">{{ infoDiplomas?.degree_awarder }}</span>
+  <div class="container pm-certificate-container">
+    <div class="outer-border"></div>
+    <div class="inner-border"></div>
+
+    <div class="pm-certificate-border col-xs-12">
+      <div class="row pm-certificate-header">
+        <div class="pm-certificate-title cursive col-xs-12 text-center">
+          <h2>{{ infoSchool?.school_name }} Certificate of Completion</h2>
         </div>
       </div>
-    </div>
-    <div class="border relative mt-4">
-      <div class="cruve one absolute"></div>
-      <div class="cruve two absolute"></div>
-      <div class="cruve three absolute"></div>
-      <div class="cruve four absolute"></div>
+
+      <div class="row pm-certificate-body">
+        <div class="pm-certificate-block">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+              <div class="pm-certificate-name margin-0 col-xs-8 text-center">
+                <p class="pm-name-text bold">
+                  Bằng kỹ sư {{ infoSchool?.department?.department_name }}
+                </p>
+              </div>
+              <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+              <div class="pm-earned col-xs-8 flex">
+                <span>Ông/ Bà:</span>
+                <span
+                  style="margin-left: 100px"
+                  class="pm-credits-text text-center sans"
+                  >{{ infoStudent?.full_name }}</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+              <div class="col-xs-8 flex">
+                <span>Ngày sinh:</span>
+                <span
+                  style="margin-left: 85px"
+                  class="pm-credits-text text-center sans"
+                  >{{ infoStudent?.profile?.date_of_birth }}</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+              <div class="col-xs-8 flex">
+                <span>Năm tốt nghiệp:</span>
+                <span
+                  style="margin-left: 44px"
+                  class="pm-credits-text text-center sans"
+                  >{{ infoDiplomas?.awarded_date }}</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+              <div class="col-xs-8 flex">
+                <span>Xếp loại tốt nghiệp:</span>
+                <span
+                  style="margin-left: 24px"
+                  class="pm-credits-text text-center sans"
+                  >{{ infoDiplomas?.academic_ability }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="pm-certificate-footer">
+              <div class="col-xs-4 pm-certified col-xs-4 text-center">
+                <span class="pm-credits-text block sans">Số hiệu:</span>
+                <span class="bold block" style="max-width: 200px">{{
+                  infoDiplomas?.id_graduate_certification
+                }}</span>
+              </div>
+              <div class="col-xs-4">
+                <!-- LEAVE EMPTY -->
+              </div>
+              <div class="col-xs-4 pm-certified col-xs-4 text-center">
+                <span class="pm-credits-text block sans"
+                  >{{ infoDiplomas?.awarded_place }} ,
+                  {{ infoDiplomas?.graduate_certification_date }}</span
+                >
+                <span class="bold block">{{
+                  infoDiplomas?.degree_awarder
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

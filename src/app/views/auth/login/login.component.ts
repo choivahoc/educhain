@@ -1,9 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormShared } from '../../../_shared/form';
 import { ModelRolesKey } from '../../../models/user.model';
 
 @Component({
@@ -25,7 +24,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.loginForm = FormShared.FormLogin(this.fb);
+    this.loginForm = this.fb.group({
+      username: this.fb.control('', Validators.required),
+      password: this.fb.control('', Validators.required),
+      role: this.fb.control('', Validators.required),
+    })
   }
 
   ngAfterViewInit() {

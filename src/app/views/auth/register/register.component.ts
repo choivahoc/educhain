@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   constructor(
       public translate: TranslateService,
       private fb : FormBuilder,
-      private authService : AuthService
+      private authService : AuthService,
   ) { }
 
   ngOnInit(): void {
