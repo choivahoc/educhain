@@ -55,7 +55,6 @@ export class CardSettingsComponent implements OnInit {
   }
 
   formSubmit() {
-    console.log(this.settingsForm.value);
     this.currentUser.email = this.settingsForm.value.email;
     this.currentUser.full_name = this.settingsForm.value.fullName;
     this.currentUser.profile.address = this.settingsForm.value.address;
@@ -68,23 +67,6 @@ export class CardSettingsComponent implements OnInit {
     this.currentUser.citizen_identity_card.no = this.settingsForm.value.identityCard.no;
 
     this.isSubmit = true;
-    // const userUpdate = {
-    //   // avatar: "string",
-    //   email: this.settingsForm.value.email,
-    //   full_name: this.settingsForm.value.fullName,
-    //   profile: {
-    //     address: this.settingsForm.value.address,
-    //     city: this.settingsForm.value.city,
-    //     date_of_birth: this.settingsForm.value.dateOfBirth,
-    //     gender: this.settingsForm.value.gender,
-    //     phone: this.settingsForm.value.phone,
-    //   },
-    //   citizen_identity_card: {
-    //     date_of_exprity: this.settingsForm.value.identityCard.dateOfExprity,
-    //     date_of_issue: this.settingsForm.value.identityCard.dateOfIssue,
-    //     no: this.settingsForm.value.identityCard.no,
-    //   },
-    // };
     this.userService.updateUser(this.currentUser, this.currentUser.user_id).subscribe((data) => {
       const Toast = Swal.mixin({
         toast: true,

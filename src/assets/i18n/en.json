@@ -10,6 +10,7 @@
     "HAVE_ACCOUNT": "Already have account?",
     "SIGN_UP" : "Sign up",
     "USERNAME_REQUIRED": "Username must required!",
+    "USERID_REQUIRED": "UserID must required!",
     "ROLE_REQUIRED": "Role must required!",
     "PASSWORD_REQUIRED": "Password must required!",
     "CHOOSE_ROLE": "Choose role...",

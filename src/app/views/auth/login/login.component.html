@@ -9,7 +9,7 @@
             <small>{{'LOGIN.LOGIN' | translate}}</small>
           </div>
           <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
-            <div class="relative w-full mb-3">
+            <div class="relative w-full mb-5">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
@@ -26,7 +26,7 @@
               />
               <small
                 id="usernameHelp"
-                class="text-red-500"
+                class="text-red-500 absolute top-70 left-0" 
                 *ngIf="
                   loginForm.get('username')?.errors?.required &&
                   loginForm.get('username')?.touched
@@ -35,7 +35,7 @@
               >
             </div>
 
-            <div class="relative w-full mb-3">
+            <div class="relative w-full mb-5">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
@@ -55,7 +55,7 @@
               </select>
               <small
                 id="roleHelp"
-                class="text-red-500"
+                class="text-red-500 absolute top-70 left-0"
                 *ngIf="
                   loginForm.get('role')?.errors?.required &&
                   loginForm.get('role')?.touched
@@ -64,7 +64,7 @@
               >
             </div>
 
-            <div class="relative w-full mb-3">
+            <div class="relative w-full mb-5">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
@@ -80,7 +80,7 @@
               />
               <small
                 id="passwordHelp"
-                class="text-red-500"
+                class="text-red-500 absolute top-70 left-0"
                 *ngIf="
                   loginForm.get('password')?.errors?.required &&
                   loginForm.get('password')?.touched
@@ -88,18 +88,6 @@
                 >{{'LOGIN.PASSWORD_REQUIRED' | translate}}</small
               >
             </div>
-            <!-- <div>
-              <label class="inline-flex items-center cursor-pointer">
-                <input
-                  id="customCheckLogin"
-                  type="checkbox"
-                  class="form-checkbox border-0 text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 rounded"
-                />
-                <span class="ml-2 text-sm font-semibold text-blueGray-600">
-                  Remember me
-                </span>
-              </label>
-            </div> -->
 
             <div class="text-center mt-6">
               <button
@@ -114,11 +102,6 @@
         </div>
       </div>
       <div class="flex flex-wrap mt-6 relative justify-end">
-        <!--        <div class="w-1/2">-->
-        <!--          <a href="javascript:void(0)" class="text-blueGray-200">-->
-        <!--            <small>Forgot password?</small>-->
-        <!--          </a>-->
-        <!--        </div>-->
         <div class="w-1/2 text-right">
           <a [routerLink]="['/auth/register']" class="text-blueGray-200">
             <small>{{'LOGIN.REGISTER' | translate}}</small>
