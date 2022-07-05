@@ -10,6 +10,7 @@
     "SIGN_UP" : "Đăng ký",
     "HAVE_ACCOUNT": "Đã có tài khoản?",
     "USERNAME_REQUIRED": "Tài khoản không được để trống!",
+    "USERID_REQUIRED": "Mã sinh viên/giáo viên không được để trống!",
     "ROLE_REQUIRED": "Vai trò không được để trống!",
     "PASSWORD_REQUIRED": "Mật khẩu không được để trống!",
     "CHOOSE_ROLE": "Chọn vai trò...",

@@ -2909,6 +2909,10 @@ select {
   top: auto;
 }
 
+.top-70 {
+  top: 70px;
+}
+
 .bottom-auto {
   bottom: auto;
 }

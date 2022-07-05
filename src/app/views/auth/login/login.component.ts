@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   submitForm() {
-
     this.authService.logIn(this.loginForm.value.username, this.loginForm.value.password, this.loginForm.value.role).subscribe((_) => {
       if (this.loginForm.value.role === this.key.Student) {
         this.router.navigate(['student/dashboard'])
