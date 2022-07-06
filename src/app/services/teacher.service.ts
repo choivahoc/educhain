@@ -18,14 +18,14 @@ export class TeacherService extends BaseApi {
     }
 
     getStudentsByClass(className: string): Observable<any> {
-        return this.httpClient.post<any>(`${this.hostUrl}/students_by_class`, {"class_name": className});
+        return this.httpClient.post<any>(`${this.hostUrl}/students_by_class`, {class_name: className});
     }
 
     getStudentDetail(params: any): Observable<any> {
         return this.httpClient.post<any>(`${this.hostUrl}/students_by_class`, params);
     }
 
-    getdiplomas(): Observable<any> {
+    getDiplomas(): Observable<any> {
         return this.httpClient.get<any>(`${this.hostUrl}/diplomas`);
     }
 
