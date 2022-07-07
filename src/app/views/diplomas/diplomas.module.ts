@@ -4,7 +4,8 @@ import { DiplomasComponent } from './diplomas.component';
 import { ViewDiplomasComponent } from './view-diplomas/view-diplomas.component';
 import { EditDiplomasComponent } from './edit-diplomas/edit-diplomas.component';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxCaptureModule } from 'ngx-capture';
 import {
   HttpClient,
   HttpClientModule,
@@ -18,6 +19,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   imports: [
     CommonModule,
+    NgxCaptureModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
