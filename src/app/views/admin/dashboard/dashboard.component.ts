@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { DiplomasService } from 'src/app/services/diplomas.service';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,9 +14,11 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(
-      private userService: UserService,
-      private adminService: AdminService,
-      private teacherService: TeacherService,
+    private userService: UserService,
+    private adminService: AdminService,
+    private teacherService: TeacherService,
+    private diplomasService: DiplomasService,
+    private router: Router
   ) { }
 
   infoAdmin: any;
@@ -24,6 +28,8 @@ export class DashboardComponent implements OnInit {
   listClass: any;
   listStudent: any;
   listDiplomas: any;
+  idSpecialPut: any;
+  view: boolean;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(data => {
@@ -60,11 +66,25 @@ export class DashboardComponent implements OnInit {
   }
 
   detailStudent(id) {
+    this.idSpecialPut = id;
     this.teacherService.getDiplomas().subscribe(diplomas => {
       this.listDiplomas = diplomas.data.filter(diploma => diploma.user_id === id)
     })
   }
-  actionDiplomas() {
-    alert('Pending...')
+  actionDiplomas(idSpecialPut) {
+    const body = {
+      "is_nft_diplomas": true
+    }
+    this.diplomasService.editLicense(idSpecialPut, body).subscribe(data => {
+      this.view = data.message
+    })
+  }
+
+  viewGraduate(idDiplomas) {
+    this.router.navigate(['diplomas']
+      , {
+        queryParams: { id: idDiplomas }
+      }
+    );
   }
 }

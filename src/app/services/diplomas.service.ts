@@ -18,4 +18,11 @@ export class DiplomasService extends BaseApi {
         return this.httpClient.get<any>(`${this.hostUrl}/diplomas?diplomas_id=${id}`);
 
     }
+    editLicense(id: any, body: any) {
+        return this.httpClient.put<any>(`${this.hostUrl}/user/${id}`, body);
+    }
+
+    postNftDiplomas(body: any) {
+        return this.httpClient.post<any>(`${this.hostUrl}/diplomas/nft`, body);
+    }
 }
