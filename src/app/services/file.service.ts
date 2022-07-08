@@ -10,11 +10,17 @@ import { environment } from '../../environments/environment';
 })
 export class FileService {
   apiUrl = environment.apiUrl;
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
   uploadImage(image: File): Observable<DataResponse<FileResponseModel>> {
     const formData: any = new FormData();
     formData.append('files', image);
 
-    return this.http.post<DataResponse<any>>(`${this.apiUrl}/files/images`, formData);
+    return this.httpClient.post<DataResponse<any>>(`${this.apiUrl}/files/images`, formData);
   }
+
+  uploadDiplomas(body: { data_image: any }) {
+    return this.httpClient.post<DataResponse<any>>(`${this.apiUrl}/images/nft`, body);
+  }
+
+
 }

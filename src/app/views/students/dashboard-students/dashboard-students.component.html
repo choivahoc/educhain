@@ -22,6 +22,7 @@
         </h3>
       </div>
       <button
+        *ngIf="infoStudent?.is_nft_diplomas"
         class="
           bg-indigo-500
           text-white
@@ -43,7 +44,6 @@
         type="button"
         (click)="viewGraduate(idDiplomas)"
       >
-        <!-- [disabled]="infoStudent.profile.graduate_active === 'not-graduate'" -->
         {{ "DIPLOMAS.VIEW" | translate }}
       </button>
     </div>
