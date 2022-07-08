@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
   }
 
   detailStudent(id) {
-    this.teacherService.getdiplomas().subscribe(diplomas => {
+    this.teacherService.getDiplomas().subscribe(diplomas => {
       this.listDiplomas = diplomas.data.filter(diploma => diploma.user_id === id)
     })
   }
