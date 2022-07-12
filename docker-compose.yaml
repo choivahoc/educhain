@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  edu-chain:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: edu-chain-image
+    container_name: edu-chain-container
+    restart: unless-stopped
+    ports:
+      - "4300:4200"
+    command: sh -c "npm start"
