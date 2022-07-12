@@ -9,5 +9,5 @@ services:
     container_name: edu-chain-container
     restart: unless-stopped
     ports:
-      - "4300:4200"
+      - "4400:4200"
     command: sh -c "npm start"
