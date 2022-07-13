@@ -36,12 +36,9 @@ export class ViewDiplomasComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.idDiplomas = this.active.snapshot.queryParams.id;
     this.getUser();
     this.getInfoDiplomas(this.idDiplomas);
-
-
   }
   getInfoDiplomas(id: any) {
     this.diplomasService.getPoint(id).subscribe(data => {
@@ -89,15 +86,22 @@ export class ViewDiplomasComponent implements OnInit {
     }
     this.diplomasService.postNftDiplomas(body).subscribe(data => {
       this.hashCode = data.data.nft_data.data[0].transactionHash;
+      window.location.reload();
     })
   }
 
   viewNFT() {
     this.showLink = true;
+    navigator.clipboard.writeText(this.hashCode);
   }
 
   openTab() {
+    navigator.clipboard.writeText(this.hashCode);
     window.open("http://job.choivahoc.vn/");
+  }
+
+  toggleModal() {
+    this.showLink = !this.showLink;
   }
 
 }

@@ -58,13 +58,12 @@
   position: absolute;
     top: 1rem;
     width: 300px;
-    height: 200px;
+    height: 250px;
     justify-content: center;
     align-items: center;
     /* margin: auto; */
     right: 3rem;
     background-color: #9dd2f3;
-    box-shadow: -5px -5px 30px 5px red, 5px 5px 30px 5px blue;
     border-radius: 10px;
 }
 
@@ -77,10 +76,16 @@
 }
 
 a{
-  cursor: pointer;
+    cursor: pointer;
     width: 150px;
     text-align: center;
     border-radius: 10px;
     background-color: #9DD2C5;
+    margin-bottom: 20px;
+}
+
+p{
+  word-break: break-all;
+  padding: 0 20px;
 }
 
