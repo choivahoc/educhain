@@ -16,17 +16,6 @@ export class NoAuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.userService.currentTokenValue() == null) return true;
-    else {
-      return Swal.fire({
-        icon: 'warning',
-        title: 'You are logged in!!!',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#fa6342',
-      }).then((result) => {
-        this.router.navigate([''])
-        return true
-      })
-    }
   }
 
 }

@@ -3,6 +3,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -23,7 +24,7 @@ export class UserService {
     JSON.parse(localStorage.getItem('token') || 'null')
   );
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   public currentTokenValue(): string {
     return this.currentToken.value;
@@ -76,30 +77,6 @@ export class UserService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops, something went wrong. Please try again later',
-      confirmButtonText: 'OK',
-      confirmButtonColor: '#fa6342',
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      console.error(
-        `Backend returned code ${error.status}, body was: `,
-        error.error
-      );
-    }
     // Return an observable with a user-facing error message.
     return throwError('Something bad happened; please try again later.');
   }
