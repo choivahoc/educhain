@@ -892,7 +892,7 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngIf="listDiplomas; else noData">
             <tr *ngFor="let diplomas of listDiplomas; let i = index">
               <th
                 class="
@@ -1017,6 +1017,13 @@
               </td>
             </tr>
           </tbody>
+          <ng-template #noData>
+            <img
+              *ngIf="viewLoading"
+              style="width: 50px"
+              src="assets/img/loading.gif"
+            />
+          </ng-template>
         </table>
       </div>
     </div>

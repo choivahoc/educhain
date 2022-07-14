@@ -86,7 +86,6 @@ export class ViewDiplomasComponent implements OnInit {
     }
     this.diplomasService.postNftDiplomas(body).subscribe(data => {
       this.hashCode = data.data.nft_data.data[0].transactionHash;
-      window.location.reload();
     })
   }
 

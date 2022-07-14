@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
   listDiplomas: any;
   idSpecialPut: any;
   view: boolean;
+  viewLoading: boolean;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(data => {
@@ -67,8 +68,9 @@ export class DashboardComponent implements OnInit {
 
   detailStudent(id) {
     this.idSpecialPut = id;
-    this.teacherService.getDiplomas().subscribe(diplomas => {
-      this.listDiplomas = diplomas.data.filter(diploma => diploma.user_id === id)
+    this.viewLoading = true;
+    this.teacherService.getDiplomasById(id).subscribe(diplomas => {
+      this.listDiplomas = diplomas.data;
     })
   }
   actionDiplomas(idSpecialPut) {

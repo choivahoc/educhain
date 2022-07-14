@@ -1,8 +1,8 @@
-import {HttpClient} from '@angular/common/http';
-import {Inject, Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {BaseApi} from 'src/app/services/base-api.class';
-import {baseUrl} from 'src/app/services/base-url';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BaseApi } from 'src/app/services/base-api.class';
+import { baseUrl } from 'src/app/services/base-url';
 
 @Injectable({
     providedIn: 'root',
@@ -18,7 +18,7 @@ export class TeacherService extends BaseApi {
     }
 
     getStudentsByClass(className: string): Observable<any> {
-        return this.httpClient.post<any>(`${this.hostUrl}/students_by_class`, {class_name: className});
+        return this.httpClient.post<any>(`${this.hostUrl}/students_by_class`, { class_name: className });
     }
 
     getStudentDetail(params: any): Observable<any> {
@@ -27,6 +27,10 @@ export class TeacherService extends BaseApi {
 
     getDiplomas(): Observable<any> {
         return this.httpClient.get<any>(`${this.hostUrl}/diplomas`);
+    }
+
+    getDiplomasById(id: any): Observable<any> {
+        return this.httpClient.get<any>(`${this.hostUrl}/diplomas?user_id=${id}`);
     }
 
     updatePoints(userId: string, data: any): Observable<any> {
