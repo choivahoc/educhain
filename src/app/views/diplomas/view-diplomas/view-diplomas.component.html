@@ -1,4 +1,4 @@
-<body>
+<body #screen>
   <div class="form h-full relative">
     <div class="box justify-center flex-col flex absolute z-2">
       <h4 class="font-bold mb-24 uppercase text-center">
@@ -28,20 +28,22 @@
         >{{ "DIPLOMAS.RANK" | translate }}:
         {{ infoDiplomas?.academic_ability }}</span
       >
-      <span class="mb-24 ml-5">{{ "DIPLOMAS.MODE" | translate }}: </span>
-      <div class="flex">
-        <div>
+      <span class="mb-24 ml-5"
+        >{{ "DIPLOMAS.MODE" | translate }}: Full-time</span
+      >
+      <div class="flex" style="justify-content: space-evenly">
+        <div style="text-align-last: center">
           <span class="mb-4 ml-5"
             >{{ "DIPLOMAS.ID_GRADUATE_CERTIFICATION" | translate }}:
-            {{ infoDiplomas?.id_graduate_certification }}</span
-          >
+          </span>
+          <p>{{ infoDiplomas?.id_graduate_certification }}</p>
         </div>
         <div class="grid">
-          <span class="mb-4 ml-5 text-center"
+          <span class="mb-4 ml-3 text-center"
             >{{ infoDiplomas?.awarded_place }} ,
             {{ infoDiplomas?.graduate_certification_date }}</span
           >
-          <span class="mb-4 ml-5">{{ infoDiplomas?.degree_awarder }}</span>
+          <span class="mb-4 ml-3">{{ infoDiplomas?.degree_awarder }}</span>
         </div>
       </div>
     </div>
@@ -52,4 +54,193 @@
       <div class="cruve four absolute"></div>
     </div>
   </div>
+
+  <div class="view flex flex-col">
+    <div>
+      <p style="padding: 20px">{{ "View diplomas NFT" | translate }}</p>
+    </div>
+    <ng-container *ngIf="hashCode; else elseTemplate">
+      <button
+        (click)="viewNFT()"
+        class="
+          mt-5
+          bg-indigo-500
+          text-white
+          active:bg-indigo-600
+          font-bold
+          uppercase
+          text-xs
+          px-4
+          py-2
+          rounded
+          shadow
+          hover:shadow-md
+          outline-none
+          focus:outline-none
+          mr-1
+          mb-1
+          ease-linear
+          transition-all
+          duration-150
+        "
+        type="button"
+      >
+        {{ "Copy code" | translate }}
+      </button>
+      <p class="" *ngIf="showLink" (click)="viewNFT()">
+        <!-- {{ hashCode }} -->
+      </p>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <p>Waiting....</p>
+    </ng-template>
+  </div>
+
+  <div
+    *ngIf="showLink"
+    class="
+      overflow-x-hidden overflow-y-auto
+      fixed
+      inset-0
+      z-50
+      outline-none
+      focus:outline-none
+      justify-center
+      items-center
+      flex
+    "
+    style="position: absolute; top: 0; right: 3rem; width: 300px; height: 300px"
+  >
+    <div class="relative w-full my-6 mx-auto max-w-sm">
+      <!--content-->
+      <div
+        class="
+          border-0
+          rounded-lg
+          shadow-lg
+          relative
+          flex flex-col
+          w-full
+          bg-white
+          outline-none
+          focus:outline-none
+        "
+      >
+        <!--header-->
+        <div
+          class="
+            flex
+            items-start
+            justify-between
+            p-5
+            border-b border-solid border-blueGray-200
+            rounded-t
+          "
+        >
+          <h3 class="text-3xl font-semibold">Code NFT</h3>
+          <button
+            class="
+              p-1
+              ml-auto
+              bg-transparent
+              border-0
+              text-black
+              opacity-5
+              float-right
+              text-3xl
+              leading-none
+              font-semibold
+              outline-none
+              focus:outline-none
+            "
+            (click)="toggleModal()"
+          >
+            <span
+              class="
+                bg-transparent
+                text-black
+                opacity-5
+                h-6
+                w-6
+                text-2xl
+                block
+                outline-none
+                focus:outline-none
+              "
+            >
+              ×
+            </span>
+          </button>
+        </div>
+        <!--body-->
+        <div class="relative p-6 flex-auto">
+          <p class="my-4 text-blueGray-500 text-lg leading-relaxed">
+            <!-- {{ hashCode }} -->
+            Copy code successful
+          </p>
+        </div>
+        <!--footer-->
+        <div
+          class="
+            flex
+            items-center
+            justify-end
+            p-6
+            border-t border-solid border-blueGray-200
+            rounded-b
+          "
+        >
+          <button
+            class="
+              text-red-500
+              background-transparent
+              font-bold
+              uppercase
+              px-6
+              py-2
+              text-sm
+              outline-none
+              focus:outline-none
+              mr-1
+              mb-1
+              ease-linear
+              transition-all
+              duration-150
+            "
+            type="button"
+            (click)="toggleModal()"
+          >
+            Close
+          </button>
+          <button
+            class="
+              bg-emerald-500
+              text-white
+              active:bg-emerald-600
+              font-bold
+              uppercase
+              text-sm
+              px-6
+              py-3
+              rounded
+              shadow
+              hover:shadow-lg
+              outline-none
+              focus:outline-none
+              mr-1
+              mb-1
+              ease-linear
+              transition-all
+              duration-150
+            "
+            type="button"
+            (click)="openTab()"
+          >
+            Search Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showLink" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
 </body>

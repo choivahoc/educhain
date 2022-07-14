@@ -1,21 +1,19 @@
 import {
   HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Observable, throwError } from "rxjs";
-import { catchError, tap } from "rxjs/operators";
-import Swal from "sweetalert2";
-import { IUser } from "../models/user.model";
-import { UserService } from "./user.service";
+  HttpErrorResponse
+} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import Swal from 'sweetalert2';
+import { UserService } from './user.service';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AuthService {
-  BASE_URL = "http://eduapi.choivahoc.vn/v1";
+  BASE_URL = 'http://eduapi.choivahoc.vn/v1';
 
   constructor(
     private httpClient: HttpClient,
@@ -26,9 +24,9 @@ export class AuthService {
   logIn(username: string, password: string, role: string): Observable<any> {
     const url = `${this.BASE_URL}/login`;
     const body = {
-      username: username,
-      password: password,
-      role: role,
+      username,
+      password,
+      role,
     };
 
     return this.httpClient.post<any>(url, body).pipe(
@@ -36,21 +34,21 @@ export class AuthService {
       tap((res) => {
         const Toast = Swal.mixin({
           toast: true,
-          position: "bottom-end",
+          position: 'bottom-end',
           showConfirmButton: false,
           timer: 3000,
           timerProgressBar: true,
           didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
           },
         });
 
         Toast.fire({
-          icon: "success",
-          title: "Signed in successfully",
+          icon: 'success',
+          title: 'Signed in successfully',
         });
-        localStorage.setItem("token", JSON.stringify(res.token));
+        localStorage.setItem('token', JSON.stringify(res.token));
         this.userService.setCurrentToken(res.token);
       })
     );
@@ -59,28 +57,28 @@ export class AuthService {
   register(username: string, userid: string, password: string) {
     const url = `${this.BASE_URL}/user/create_account`;
     const body = {
-      username: username,
+      username,
       user_id: userid,
-      password: password,
+      password,
     };
     return this.httpClient.post<any>(url, body).pipe(
       catchError(this.handleError),
-      tap((user) => {
+      tap((_) => {
         const Toast = Swal.mixin({
           toast: true,
-          position: "bottom-end",
+          position: 'bottom-end',
           showConfirmButton: false,
           timer: 3000,
           timerProgressBar: true,
           didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
           },
         });
 
         Toast.fire({
-          icon: "success",
-          title: "Register in successfully",
+          icon: 'success',
+          title: 'Register in successfully',
         });
         // localStorage.setItem("currentUser", JSON.stringify(user));
         // this.userService.setCurrentUser(user);
@@ -90,19 +88,19 @@ export class AuthService {
   }
 
   logOut() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem('token');
+    localStorage.removeItem('currentUser');
     this.userService.setCurrentUser(null as any);
     this.userService.setCurrentToken(null as any);
-    this.router.navigate(["auth", "login"]);
+    this.router.navigate(['auth', 'login']);
   }
 
   private handleError(error: HttpErrorResponse) {
     Swal.fire({
-      icon: "error",
-      title: "Oops, something went wrong. Please try again later",
-      confirmButtonText: "OK",
-      confirmButtonColor: "#fa6342",
+      icon: 'error',
+      title: 'Oops, something went wrong. Please try again later',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#fa6342',
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
@@ -112,6 +110,6 @@ export class AuthService {
       }
     });
     // Return an observable with a user-facing error message.
-    return throwError("Something bad happened; please try again later.");
+    return throwError('Something bad happened; please try again later.');
   }
 }

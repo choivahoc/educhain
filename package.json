@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --disableHostCheck true",
     "serve": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -31,6 +31,8 @@
     "@tailwindcss/forms": "0.2.1",
     "chart.js": "2.9.4",
     "i": "^0.3.7",
+    "ngx-capture": "^0.12.2",
+    "ngx-toastr": "^13.2.1",
     "rxjs": "6.6.6",
     "sweetalert2": "^11.4.17",
     "tailwindcss": "^2.2.19",

@@ -1,151 +1,159 @@
 <div class="flex flex-wrap mt-4">
-  <div class="w-full mb-12 xl:mb-0 px-4">
-    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-
-      <div class="block w-full overflow-x-auto">
-        <h4 style="padding: 15px">
-         <b> {{className}} Class</b>
-        </h4>
-        <table class="items-center w-full bg-transparent border-collapse">
-          <thead class="thead-light">
-            <tr>
-              <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                User ID
-              </th>
-              <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                Full Name
-              </th>
-              <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                Gender
-              </th>
-              <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
-                Date Of Birth</th>
-              <th
-                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
-                Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let student of listStudents">
-              <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                {{student.user_id}}
-              </th>
-              <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                {{student.full_name}}
-              </th>
-              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {{student.gender}}
-              </td>
-              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                {{student.date_of_birth}}
-              </td>
-              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                <button (click)="detailStudent(student.user_id)"
-                  class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                  type="button">
-                  View Detail
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-  </div>
-
-
-
-  <div class="flex flex-wrap mt-4" *ngIf="displayStudentDetail">
     <div class="w-full mb-12 xl:mb-0 px-4">
-      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 
-        <div >
-          <h3 style="padding: 15px; text-decoration-line:underline">
-            <b> Full Name: {{studentDetail?.full_name}}</b>
-          </h3>
-          <h5 style="padding: 15px;">
-            <b> Diplomas infomation</b>
-          </h5>
-          <table class="items-center w-full bg-transparent border-collapse">
-            <thead class="thead-light">
-
-              <tr>
-                <th
-                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Diplomas ID
-                </th>
-                <th
-                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Academic Ability
-                </th>
-                <th
-                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
-                  Awarded Date</th>
-                <th
-                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
-                  Action</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <tr *ngFor="let diploma of listdiplomasByUserID">
-                <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                  {{diploma?.diplomas_id}}
-                </th>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {{diploma?.academic_ability}}
-                </td>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  {{diploma?.awarded_date}}
-                </td>
-
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <button
-                    class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button">
-                    View Detail
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h5 style="padding: 15px;">
-            <b> Point</b>
-          </h5>
-          <table class="items-center w-full bg-transparent border-collapse">
-
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              <form [formGroup]="form">
-
-                <div formArrayName="points" *ngFor="let elment of form.controls.points?.value ; let i = index">
-                  <ng-container [formGroupName]="i">
+            <div class="block w-full overflow-x-auto">
+                <h4 style="padding: 15px">
+                    <b> {{className}} Class</b>
+                </h4>
+                <table class="items-center w-full bg-transparent border-collapse">
+                    <thead class="thead-light">
                     <tr>
-                      <td>{{studentDetail?.student_diplomas.transcript[i].transcript_academic.transcript_academic_name}}
-                      </td>
-                      <td> <input type="text" formControlName="point"></td>
-
+                        <th
+                                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            User ID
+                        </th>
+                        <th
+                                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Full Name
+                        </th>
+                        <th
+                                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Gender
+                        </th>
+                        <th
+                                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                            Date Of Birth
+                        </th>
+                        <th
+                                class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                            Action
+                        </th>
                     </tr>
-                  </ng-container>
-                </div>
-                <button (click)="updatePoints()" style="float:right"  *ngIf="form.controls.points?.value.length>0"
-                class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button">
-               Submit
-              </button>
-              <button (click)="updatePoints()" style="float:right"  *ngIf="form.controls.points?.value.length==0"
-                class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button">
-               Add
-              </button>
-              </form>
-            </td>
-          </table>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let student of listStudents">
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{student.user_id}}
+                        </th>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{student.full_name}}
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {{student.gender}}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {{student.date_of_birth}}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <button (click)="detailStudent(student.user_id)"
+                                    class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button">
+                                View Detail
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
+
     </div>
+
+
+    <div class="flex flex-wrap mt-4" *ngIf="displayStudentDetail">
+        <div class="w-full mb-12 xl:mb-0 px-4">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+
+                <div>
+                    <h3 style="padding: 15px; text-decoration-line:underline">
+                        <b> Full Name: {{studentDetail?.full_name}}</b>
+                    </h3>
+                    <h5 style="padding: 15px;">
+                        <b> Diplomas infomation</b>
+                    </h5>
+                    <table class="items-center w-full bg-transparent border-collapse">
+                        <thead class="thead-light">
+
+                        <tr>
+                            <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                Diplomas ID
+                            </th>
+                            <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                Academic Ability
+                            </th>
+                            <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                Awarded Date
+                            </th>
+                            <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px">
+                                Action
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr *ngFor="let diploma of listDiplomasByUserID">
+                            <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                                {{diploma?.diplomas_id}}
+                            </th>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                {{diploma?.academic_ability}}
+                            </td>
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                {{diploma?.awarded_date}}
+                            </td>
+
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                <button
+                                        class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="button">
+                                    View Detail
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <h5 style="padding: 15px;">
+                        <b> Point</b>
+                    </h5>
+                    <table class="items-center w-full bg-transparent border-collapse">
+
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <form [formGroup]="form">
+
+                                <div formArrayName="points"
+                                     *ngFor="let elment of form.controls.points?.value ; let i = index">
+                                    <ng-container [formGroupName]="i">
+                                        <tr>
+                                            <td>{{studentDetail?.student_diplomas.transcript[i].transcript_academic.transcript_academic_name}}
+                                            </td>
+                                            <td><input type="text" formControlName="point"></td>
+
+                                        </tr>
+                                    </ng-container>
+                                </div>
+                                <button (click)="updatePoints()" style="float:right"
+                                        *ngIf="form.controls.points?.value.length>0"
+                                        class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="button">
+                                    Submit
+                                </button>
+                                <button (click)="updatePoints()" style="float:right"
+                                        *ngIf="form.controls.points?.value.length==0"
+                                        class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                        type="button">
+                                    Add
+                                </button>
+                            </form>
+                        </td>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
