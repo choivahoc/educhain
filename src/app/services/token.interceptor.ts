@@ -5,9 +5,11 @@ import {
   HttpHandler,
   HttpRequest,
 } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { UserService } from "./user.service";
 import { Router } from "@angular/router";
+import { catchError } from "rxjs/operators";
+import Swal from "sweetalert2";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -19,22 +21,38 @@ export class TokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const headersConfig: any = {
       "Content-Type": "application/json; charset=utf-8",
-      Accept: "application/json; charset=utf-8",
+      "Accept": "application/json; charset=utf-8",
       "Access-Control-Allow-Origin": "*, educhain.choivahoc.vn",
     };
 
     const token = this.userService.currentTokenValue();
 
     if (token) {
-      const expiry = JSON.parse(atob(token.split(".")[1])).exp;
-      if (!(Math.floor(new Date().getTime() / 1000) >= expiry)) {
-        headersConfig["Authorization"] = `Bearer ${token}`;
-      } else {
-        this.router.navigate(['auth','login'])
-      }
+      headersConfig['Authorization'] = `Bearer ${token}`;
     }
-
     const request = req.clone({ setHeaders: headersConfig });
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError(err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Please login!',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#fa6342',
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            if (err.status === 401) {
+              localStorage.removeItem("token");
+              localStorage.removeItem("currentUser");
+              window.location.href = "auth/login";            
+            }
+            return true;
+          } else {
+            return false;
+          }
+        });
+        return throwError(err);
+      })
+    )
   }
 }
