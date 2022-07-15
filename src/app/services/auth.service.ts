@@ -96,19 +96,50 @@ export class AuthService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops, something went wrong. Please try again later',
-      confirmButtonText: 'OK',
-      confirmButtonColor: '#fa6342',
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    if(error.error.subcode === 4001002){
+      Swal.fire({
+        icon: 'error',
+        title: 'Username is already taken, please try another!',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#fa6342',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    } else if(error.error.subcode === 4001000){
+      Swal.fire({
+        icon: 'error',
+        title: 'User id is invalid!',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#fa6342',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+    else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops, something went wrong. Please try again later',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#fa6342',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
     // Return an observable with a user-facing error message.
     return throwError('Something bad happened; please try again later.');
   }
