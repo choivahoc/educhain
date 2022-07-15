@@ -92,7 +92,12 @@
       </p>
     </ng-container>
     <ng-template #elseTemplate>
-      <p>Waiting....</p>
+      <img
+        *ngIf="!errorData"
+        style="width: 50px"
+        src="assets/img/loading.gif"
+      />
+      <p *ngIf="errorData">Account error gen NFT</p>
     </ng-template>
   </div>
 

@@ -24,6 +24,7 @@ export class ViewDiplomasComponent implements OnInit {
   bodyNFT: any;
   hashCode: any;
   showLink: boolean;
+  errorData: boolean = false;
 
   constructor(
     private active: ActivatedRoute,
@@ -56,7 +57,12 @@ export class ViewDiplomasComponent implements OnInit {
         }, 500);
       }
       else {
-        this.hashCode = this.infoDiplomas.nft_data.data[0].transactionHash;
+        if (this.infoDiplomas.nft_data === "Error") {
+          this.errorData = true;
+        }
+        else {
+          this.hashCode = this.infoDiplomas?.nft_data?.data[0]?.transactionHash;
+        }
       }
     })
   }
@@ -86,8 +92,11 @@ export class ViewDiplomasComponent implements OnInit {
     }
     this.diplomasService.postNftDiplomas(body).subscribe(data => {
       this.hashCode = data.data.nft_data.data[0].transactionHash;
-      window.location.reload();
-    })
+    },
+      (err) => {
+        alert("Error gen NFT")
+      }
+    )
   }
 
   viewNFT() {
