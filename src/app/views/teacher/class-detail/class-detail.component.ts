@@ -20,6 +20,10 @@ export class ClassDetailComponent implements OnInit {
   diplomas: any;
   form: FormGroup;
 
+  get formArr() {
+    return this.form.controls.points as FormArray;
+  }
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -56,9 +60,10 @@ export class ClassDetailComponent implements OnInit {
         const points = this.form.controls.points as FormArray;
         if (item.point) {
           points.push(this.fb.group({
-            point: item.point,
+            [item.transcript_academic?.transcript_academic_name]: item.point,
           }));
         }
+
       })
     });
   }
@@ -71,13 +76,15 @@ export class ClassDetailComponent implements OnInit {
   }
 
   updatePoints() {
+    console.log(this.form.controls);
+
     const transcript = this.studentDetail.student_diplomas.transcript.map((item, index) => {
-      item.point = this.form.controls.points.value[index].point;
+      item.point = this.form.controls.points.value[index][`${item.transcript_academic?.transcript_academic_name}`];
       return item;
     });
 
     this.teacherService.updatePoints(this.studentDetail.user_id, transcript).subscribe((_) => {
-      this.toastr.success('','Update point successful!');
+      this.toastr.success('', 'Update point successful!');
     })
 
   }
