@@ -113,7 +113,7 @@ export class AuthService {
     } else if(error.error.subcode === 4001000){
       Swal.fire({
         icon: 'error',
-        title: 'User id or password is invalid!',
+        title: 'User name, user id or password is invalid!',
         confirmButtonText: 'OK',
         confirmButtonColor: '#fa6342',
       }).then((result) => {
