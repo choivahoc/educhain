@@ -669,7 +669,7 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngIf="!noDataStudent; else noStudent">
             <tr *ngFor="let student of listStudent; let i = index">
               <th
                 class="
@@ -764,6 +764,11 @@
               </td>
             </tr>
           </tbody>
+          <ng-template #noStudent>
+            <p style="position: absolute; top: 10rem; left: 17rem">
+              No data student in class
+            </p>
+          </ng-template>
         </table>
       </div>
     </div>
@@ -892,7 +897,7 @@
               </th>
             </tr>
           </thead>
-          <tbody *ngIf="listDiplomas; else noData">
+          <tbody *ngIf="!noDataDiplomas; else noData">
             <tr *ngFor="let diplomas of listDiplomas; let i = index">
               <th
                 class="
@@ -1018,11 +1023,9 @@
             </tr>
           </tbody>
           <ng-template #noData>
-            <img
-              *ngIf="viewLoading"
-              style="width: 50px"
-              src="assets/img/loading.gif"
-            />
+            <p style="position: absolute; top: 10rem; left: 40rem">
+              Please update information of diplomas
+            </p>
           </ng-template>
         </table>
       </div>

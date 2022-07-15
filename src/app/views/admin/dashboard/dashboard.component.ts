@@ -30,7 +30,8 @@ export class DashboardComponent implements OnInit {
   listDiplomas: any;
   idSpecialPut: any;
   view: boolean;
-  viewLoading: boolean;
+  noDataDiplomas: boolean = false;
+  noDataStudent: boolean = false;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(data => {
@@ -53,24 +54,32 @@ export class DashboardComponent implements OnInit {
   getMajor(id) {
     this.adminService.getMajors(id).subscribe(data => {
       this.listMajor = data.data;
+      this.clear();
     })
   }
 
   getClass(listClass) {
     this.listClass = listClass;
+    this.listStudent = null;
+    this.listDiplomas = null;
+    this.noDataDiplomas = false;
+    this.noDataStudent = false;
   }
 
   getStudent(id) {
     this.teacherService.getStudentsByClass(id).subscribe(data => {
-      this.listStudent = data.data
+      this.listStudent = data.data;
+      this.noDataStudent = data.data.length == 0 ? true : false;
+      this.listDiplomas = null;
+      this.noDataDiplomas = false;
     })
   }
 
   detailStudent(id) {
     this.idSpecialPut = id;
-    this.viewLoading = true;
     this.teacherService.getDiplomasById(id).subscribe(diplomas => {
       this.listDiplomas = diplomas.data;
+      this.noDataDiplomas = diplomas.count == 0 ? true : false;
     })
   }
   actionDiplomas(idSpecialPut) {
@@ -88,5 +97,12 @@ export class DashboardComponent implements OnInit {
         queryParams: { id: idDiplomas }
       }
     );
+  }
+  clear() {
+    this.listClass = null;
+    this.listStudent = null;
+    this.listDiplomas = null;
+    this.noDataDiplomas = false;
+    this.noDataStudent = false;
   }
 }
