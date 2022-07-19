@@ -5,6 +5,7 @@ import { NgxCaptureService } from 'ngx-capture';
 import { tap } from 'rxjs/operators';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { FileService } from 'src/app/services/file.service';
+import { TeacherService } from 'src/app/services/teacher.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class ViewDiplomasComponent implements OnInit {
   infoDiplomas: any;
   infoStudent: any;
   infoSchool: any;
+  idSV: any;
   img = '';
   dataNFT: any;
   bodyNFT: any;
@@ -33,17 +35,23 @@ export class ViewDiplomasComponent implements OnInit {
     private userService: UserService,
     private translate: TranslateService,
     private captureService: NgxCaptureService,
-    private fileService: FileService
+    private fileService: FileService,
+    private teacherService: TeacherService
   ) { }
 
   ngOnInit() {
     this.idDiplomas = this.active.snapshot.queryParams.id;
-    this.getUser();
+    this.idSV = this.active.snapshot.queryParams.idSV;
     this.getInfoDiplomas(this.idDiplomas);
+    // this.getUser();
   }
   getInfoDiplomas(id: any) {
     this.diplomasService.getPoint(id).subscribe(data => {
       this.infoDiplomas = data.data[0];
+      this.infoStudent = this.infoDiplomas.graduate_info[0].en.user;
+      this.infoSchool = this.infoDiplomas.graduate_info[0].en;
+
+
       if (!this.infoDiplomas.nft_image) {
         setTimeout(() => {
           this.captureService
@@ -68,10 +76,20 @@ export class ViewDiplomasComponent implements OnInit {
   }
 
   getUser() {
-    this.userService.getCurrentUser().subscribe(data => {
-      this.infoStudent = data.data;
-      this.infoSchool = this.infoStudent.school[0];
-    })
+    // this.userService.getCurrentUser().subscribe(data => {
+    //   this.infoStudent = data.data;
+    //   this.infoSchool = this.infoStudent.school[0];
+    // })
+    // const params = {
+    //   user_id: this.idSV
+    // };
+    // this.teacherService.getStudentDetail(params).subscribe(data => {
+    //   this.infoStudent = data.data;
+    //   // this.infoSchool = this.infoStudent.school[0];
+    //   console.log(data);
+
+    // })
+    this.infoStudent = this.infoDiplomas.graduate_info[0].en.user;
   }
 
   uploadDiplomas() {

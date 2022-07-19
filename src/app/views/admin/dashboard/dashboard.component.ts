@@ -78,6 +78,7 @@ export class DashboardComponent implements OnInit {
   detailStudent(id) {
     this.idSpecialPut = id;
     this.teacherService.getDiplomasById(id).subscribe(diplomas => {
+      this.view = !!diplomas.data[0]?.nft_data?.message;
       this.listDiplomas = diplomas.data;
       this.noDataDiplomas = diplomas.count == 0 ? true : false;
     })
@@ -94,7 +95,7 @@ export class DashboardComponent implements OnInit {
   viewGraduate(idDiplomas) {
     this.router.navigate(['diplomas']
       , {
-        queryParams: { id: idDiplomas }
+        queryParams: { id: idDiplomas, idSV: this.idSpecialPut }
       }
     );
   }

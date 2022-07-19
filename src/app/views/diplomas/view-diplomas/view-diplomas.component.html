@@ -1,28 +1,31 @@
 <body #screen>
   <div class="form h-full relative">
     <div class="box justify-center flex-col flex absolute z-2">
+      <h4 class="font-bold mb-5 uppercase text-center">
+        {{ infoSchool?.tile }}
+      </h4>
       <h4 class="font-bold mb-24 uppercase text-center">
-        {{ infoSchool?.school_name }}
+        {{ infoSchool?.school?.school_name }}
       </h4>
       <h5 class="font-semibold text-center">
         {{ "DIPLOMAS.CONFERRED" | translate }}
       </h5>
-      <h3 class="font-bold mb-4 text-center uppercase">
-        {{ "DIPLOMAS.DEGREE_OF" | translate }}
-      </h3>
+      <h4 class="font-bold mb-4 text-center uppercase">
+        {{ "DIPLOMAS.DEGREE_OF" | translate }} {{ infoSchool?.training_system }}
+      </h4>
       <h4 class="font-bold mb-24 uppercase text-center">
-        {{ infoSchool?.department?.department_name }}
+        {{ infoSchool?.school?.department?.department_name }}
       </h4>
       <span class="mb-4 ml-5"
         >{{ "DIPLOMAS.UPON" | translate }}: {{ infoStudent?.full_name }}</span
       >
       <span class="mb-4 ml-5"
         >{{ "STUDENT.BIRTH_DAY" | translate }}:
-        {{ infoStudent?.profile?.date_of_birth }}</span
+        {{ infoStudent?.date_of_birth }}</span
       >
       <span class="mb-4 ml-5"
         >{{ "DIPLOMAS.YEAR_OF_GRADUATION" | translate }}:
-        {{ infoDiplomas?.awarded_date }}</span
+        {{ infoDiplomas?.graduate_certification_date }}</span
       >
       <span class="mb-4 ml-5"
         >{{ "DIPLOMAS.RANK" | translate }}:
