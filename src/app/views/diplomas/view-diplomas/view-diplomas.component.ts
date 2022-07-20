@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxCaptureService } from 'ngx-capture';
 import { tap } from 'rxjs/operators';
+import { CopyContentService } from 'src/app/services/copy.service';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { FileService } from 'src/app/services/file.service';
 import { TeacherService } from 'src/app/services/teacher.service';
@@ -36,7 +37,8 @@ export class ViewDiplomasComponent implements OnInit {
     private translate: TranslateService,
     private captureService: NgxCaptureService,
     private fileService: FileService,
-    private teacherService: TeacherService
+    private teacherService: TeacherService,
+    private copier: CopyContentService
   ) { }
 
   ngOnInit() {
@@ -76,19 +78,6 @@ export class ViewDiplomasComponent implements OnInit {
   }
 
   getUser() {
-    // this.userService.getCurrentUser().subscribe(data => {
-    //   this.infoStudent = data.data;
-    //   this.infoSchool = this.infoStudent.school[0];
-    // })
-    // const params = {
-    //   user_id: this.idSV
-    // };
-    // this.teacherService.getStudentDetail(params).subscribe(data => {
-    //   this.infoStudent = data.data;
-    //   // this.infoSchool = this.infoStudent.school[0];
-    //   console.log(data);
-
-    // })
     this.infoStudent = this.infoDiplomas.graduate_info[0].en.user;
   }
 
@@ -119,11 +108,11 @@ export class ViewDiplomasComponent implements OnInit {
 
   viewNFT() {
     this.showLink = true;
-    navigator.clipboard.writeText(this.hashCode);
+    this.copier.copyText(this.hashCode);
   }
 
   openTab() {
-    navigator.clipboard.writeText(this.hashCode);
+    this.copier.copyText(this.hashCode);
     window.open("http://job.choivahoc.vn/");
   }
 
